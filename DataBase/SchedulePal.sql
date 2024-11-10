@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `schedulepal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `schedulepal`;
+CREATE DATABASE  IF NOT EXISTS `triggered` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `triggered`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: schedulepal
+-- Host: 127.0.0.1    Database: triggered
 -- ------------------------------------------------------
 -- Server version	8.0.30
 
@@ -18,82 +18,85 @@ USE `schedulepal`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fakultas`
+-- Table structure for table `detail_penjualan`
 --
 
-DROP TABLE IF EXISTS `fakultas`;
+DROP TABLE IF EXISTS `detail_penjualan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fakultas` (
-  `id_fakultas` int NOT NULL,
-  `nama_fakultas` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_fakultas`)
+CREATE TABLE `detail_penjualan` (
+  `ID_PENJUALAN` varchar(10) NOT NULL,
+  `ID_PRODUK` varchar(10) NOT NULL,
+  `JUMLAH_ITEM` decimal(11,0) NOT NULL,
+  `HARGA_TOTAL_ITEM` decimal(11,0) NOT NULL,
+  PRIMARY KEY (`ID_PENJUALAN`,`ID_PRODUK`),
+  KEY `ID_PRODUK` (`ID_PRODUK`),
+  CONSTRAINT `detail_penjualan_ibfk_1` FOREIGN KEY (`ID_PENJUALAN`) REFERENCES `penjualan` (`ID_PENJUALAN`),
+  CONSTRAINT `detail_penjualan_ibfk_2` FOREIGN KEY (`ID_PRODUK`) REFERENCES `produk` (`ID_PRODUK`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `fakultas`
+-- Dumping data for table `detail_penjualan`
 --
 
-LOCK TABLES `fakultas` WRITE;
-/*!40000 ALTER TABLE `fakultas` DISABLE KEYS */;
-INSERT INTO `fakultas` VALUES (4,'Informatika'),(5,'Fakultas Kedokteran'),(6,'Fakultas Psikologi'),(7,'Fakultas Ilmu Sosial dan Politik'),(8,'Fakultas Seni Rupa dan Desain'),(9,'Fakultas Matematika dan Ilmu Pengetahuan Alam'),(10,'Fakultas Pertanian');
-/*!40000 ALTER TABLE `fakultas` ENABLE KEYS */;
+LOCK TABLES `detail_penjualan` WRITE;
+/*!40000 ALTER TABLE `detail_penjualan` DISABLE KEYS */;
+INSERT INTO `detail_penjualan` VALUES ('J001','P001',10,15000),('J001','P002',5,25000);
+/*!40000 ALTER TABLE `detail_penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `schedule`
+-- Table structure for table `penjualan`
 --
 
-DROP TABLE IF EXISTS `schedule`;
+DROP TABLE IF EXISTS `penjualan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `schedule` (
-  `id_acara` int NOT NULL,
-  `judul_acara` varchar(50) NOT NULL,
-  `deskripsi` varchar(255) NOT NULL,
-  `waktu` time NOT NULL,
-  `tanggal` date NOT NULL,
-  `lokasi` varchar(255) NOT NULL,
-  `status` enum('true','false','pending') DEFAULT NULL,
-  PRIMARY KEY (`id_acara`)
+CREATE TABLE `penjualan` (
+  `ID_PENJUALAN` varchar(10) NOT NULL,
+  `NAMA_PELANGGAN` varchar(64) NOT NULL,
+  `TOTAL_HARGA` decimal(11,0) NOT NULL,
+  `STATUS_PEMBAYARAN` decimal(1,0) NOT NULL DEFAULT (0),
+  PRIMARY KEY (`ID_PENJUALAN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `schedule`
+-- Dumping data for table `penjualan`
 --
 
-LOCK TABLES `schedule` WRITE;
-/*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
+LOCK TABLES `penjualan` WRITE;
+/*!40000 ALTER TABLE `penjualan` DISABLE KEYS */;
+INSERT INTO `penjualan` VALUES ('J001','Ridwan',40000,1),('J003','Nobi',0,0);
+/*!40000 ALTER TABLE `penjualan` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `users`
+-- Table structure for table `produk`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `produk`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `NIM` int NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `role` enum('user','admin') NOT NULL DEFAULT 'user',
-  `fakultas` varchar(255) NOT NULL,
-  PRIMARY KEY (`NIM`)
+CREATE TABLE `produk` (
+  `ID_PRODUK` varchar(10) NOT NULL,
+  `NAMA_PRODUK` varchar(64) NOT NULL,
+  `HARGA_PRODUK` decimal(11,0) NOT NULL,
+  `KETERANGAN` varchar(255) NOT NULL,
+  `STOK` decimal(11,0) NOT NULL,
+  PRIMARY KEY (`ID_PRODUK`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `produk`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (10,'admin','$2y$10$9h3plJhS6R.nBD8d0AiCkuGW9AGaq0kmxT49.ZCC34p3R0oEYUm.y','admin','admin');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `produk` WRITE;
+/*!40000 ALTER TABLE `produk` DISABLE KEYS */;
+INSERT INTO `produk` VALUES ('P001','Indomie',3000,'Mie nya orang Indonesia',95),('P002','Le Minerale',5000,'Kayak ada manis-manis nya',185);
+/*!40000 ALTER TABLE `produk` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -105,4 +108,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-10 22:55:49
+-- Dump completed on 2024-11-10 23:11:31
