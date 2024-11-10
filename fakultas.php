@@ -9,16 +9,16 @@
 <body>
     <?php
         include "templates/sidebar.php";
-        include "koneksi.php";
+        include "include/connection.php";
 
         $perpage = 5;
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $offset = ($page - 1) * $perpage;
 
         $query = "SELECT * FROM fakultas LIMIT $perpage OFFSET $offset";
-        $result = $connect->query($query);
+        $result = $conn->query($query);
 
-        $totalitemsquery = $connect->query("SELECT COUNT(*) as total FROM fakultas");
+        $totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM fakultas");
         $totalitems = $totalitemsquery->fetch_assoc()['total'];
         $totalpages = ceil($totalitems / $perpage);
     ?>
