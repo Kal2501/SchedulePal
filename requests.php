@@ -1,4 +1,3 @@
-
 <?php
 include 'include/connection.php';
 include 'include/function.php';
@@ -19,7 +18,7 @@ $query = "SELECT users.NIM, fakultas.nama_fakultas, schedule.judul_acara, schedu
               FROM schedule 
               JOIN users ON schedule.NIM = users.NIM 
               JOIN fakultas ON users.fakultas = fakultas.id_fakultas 
-              LIMIT $perpage OFFSET $offset";
+              where schedule.status ='pending' LIMIT $perpage OFFSET $offset";
 $result = $conn->query($query);
 
 $totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule");
@@ -121,4 +120,3 @@ $totalpages = ceil($totalitems / $perpage);
 </body>
 
 </html>
-
