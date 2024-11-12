@@ -18,7 +18,7 @@
 }
 .content {
   position: absolute;
-  height: 100%;
+  /* height: 100%; */
   width: 65.5vw;
   left: 25%;
   top: 9rem;
@@ -48,7 +48,7 @@ tbody {
 tbody td {
   outline: 1px solid var(--primary);
   width: 10px;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   align-items: center;
   text-align: center;
   font-size: 0.9rem;
