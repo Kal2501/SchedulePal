@@ -90,15 +90,15 @@ function requestSchedule($id_acara = null, $status = null, $conn = null)
 
     if ($stmt->execute()) {
       $stmt->close();
-      return true;
+      return $status = "Diterima";
     }
     $stmt->close();
-    return false;
+    return $status = "Ditolak";
   }
 }
 function jumlahScheduleSetuju($conn)
 {
-  $sql = "SELECT COUNT(status) FROM schedule WHERE status='true'";
+  $sql = "SELECT COUNT(status) FROM schedule WHERE status='Diterima'";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
   return $row['COUNT(status)'];
@@ -106,7 +106,7 @@ function jumlahScheduleSetuju($conn)
 
 function jumlahScheduleTolak($conn)
 {
-  $sql = "SELECT COUNT(status) FROM schedule WHERE status='False'";
+  $sql = "SELECT COUNT(status) FROM schedule WHERE status='Ditolak'";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
   return $row['COUNT(status)'];

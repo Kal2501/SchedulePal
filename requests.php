@@ -18,7 +18,7 @@ $query = "SELECT users.NIM, fakultas.nama_fakultas, schedule.judul_acara, schedu
               FROM schedule 
               JOIN users ON schedule.NIM = users.NIM 
               JOIN fakultas ON users.fakultas = fakultas.id_fakultas 
-              where schedule.status ='pending' LIMIT $perpage OFFSET $offset";
+              where schedule.status ='Tunggu' LIMIT $perpage OFFSET $offset";
 $result = $conn->query($query);
 
 $totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule");
@@ -68,14 +68,14 @@ $totalpages = ceil($totalitems / $perpage);
                         <td><?= $row['waktu'] ?></td>
                         <td><?= $row['tanggal'] ?></td>
                         <td>
-                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=true">
+                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=Diterima">
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#4ADE80">
                                         <path
                                             d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z" />
                                     </svg></button>
                             </a>
-                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=false">
+                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=Ditolak">
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                                         width="24px" fill="#EF4444">
                                         <path
@@ -101,7 +101,7 @@ $totalpages = ceil($totalitems / $perpage);
                     </a>
                 <?php endif; ?>
 
-                <div>Page <?= $page ?> of <?= $totalpages ?></div>
+                <p>Page <?= $page ?> of <?= $totalpages ?></p>
                 <?php if ($page < $totalpages): ?>
                     <a href="?page=<?= $page + 1 ?>">
                         <button type="button">

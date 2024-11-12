@@ -15,10 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result['status']) {
         $_SESSION['user'] = $result;
         if ($result['role'] == 'admin') {
-            header('Location: index.php');
-        }
-        else {
             header('Location: home.php');
+        } else {
+            header('Location: index.php');
         }
     } else {
         echo "<script>alert('" . $result['message'] . "')</script>";

@@ -55,7 +55,7 @@ CREATE TABLE `schedule` (
   `waktu` time NOT NULL,
   `tanggal` date NOT NULL,
   `lokasi` varchar(255) NOT NULL,
-  `status` enum('true','false','pending') DEFAULT NULL,
+  `status` enum('Diterima','Ditolak','Tunggu') DEFAULT NULL,
   `NIM` bigint DEFAULT NULL,
   `fakultas` int NOT NULL,
   PRIMARY KEY (`id_acara`),
@@ -72,7 +72,14 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (1,'Workshop AI','Belajar dasar AI dan Machine Learning','09:00:00','2024-11-15','Ruang 101','true',12345678901,1),(2,'Seminar Teknologi','Seminar teknologi terbaru di industri','10:30:00','2024-11-16','Aula Utama','pending',12345678902,2),(3,'Pelatihan Manajemen','Pelatihan manajemen untuk mahasiswa baru','13:00:00','2024-11-17','Ruang 201','true',12345678903,3),(4,'Kuliah Umum Akuntansi','Kuliah umum tentang akuntansi modern','15:00:00','2024-11-18','Ruang 305','false',12345678904,1),(5,'Lomba Konstruksi','Lomba konstruksi antar mahasiswa teknik sipil','08:00:00','2024-11-19','Lapangan Kampus','true',12345678905,5);
+INSERT INTO `schedule` (`id_acara`, `judul_acara`, `deskripsi`, `waktu`, `tanggal`, `lokasi`, `status`, `NIM`, `fakultas`) 
+VALUES
+(7, 'Workshop AI', 'Pelatihan tentang dasar-dasar Artificial Intelligence.', '09:00:00', '2024-11-15', 'Ruang Seminar Fakultas Teknik', 'Tunggu', 12345678901, 1),
+(8, 'Hackathon', 'Lomba coding selama 24 jam untuk mahasiswa.', '08:00:00', '2024-12-01', 'Auditorium Fakultas Ilmu Komputer', 'Tunggu', 12345678904, 1),
+(9, 'Seminar Ekonomi', 'Seminar tentang perkembangan ekonomi global.', '13:00:00', '2024-12-10', 'Aula Fakultas Ekonomi', 'Tunggu', 12345678903, 3),
+(10, 'Pelatihan Hukum', 'Pelatihan keterampilan hukum bagi mahasiswa.', '10:00:00', '2024-11-20', 'Ruang Diskusi Fakultas Hukum', 'Tunggu', 12345678905, 4),
+(11, 'Kuliah Umum Kedokteran', 'Kuliah umum dengan tema kesehatan global.', '14:00:00', '2024-11-25', 'Ruang Kuliah Fakultas Kedokteran', 'Tunggu', 12345678904, 5),
+(12, 'Pelatihan Hukum', 'Pelatihan keterampilan hukum bagi mahasiswa.', '10:00:00', '2024-11-20', 'Ruang Diskusi Fakultas Hukum', 'Tunggu', 12345678905, 4);
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 

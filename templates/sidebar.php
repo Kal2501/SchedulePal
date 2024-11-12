@@ -12,7 +12,7 @@
         rel="stylesheet">
 
 <body>
-    <a class="profile" href="index.php">
+    <a class="profile" href="home.php">
         Admin
         <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#8B5CF6">
             <path

@@ -79,7 +79,7 @@ $schedules = $conn->query($query);
                     </a>
                 <?php endif; ?>
 
-                <div>Page <?= $page ?> of <?= $totalpages ?></div>
+                <p>Page <?= $page ?> of <?= $totalpages ?></p>
                 <?php if ($page < $totalpages): ?>
                     <a href="?page=<?= $page + 1 ?>">
                         <button type="button">
