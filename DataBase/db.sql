@@ -24,7 +24,7 @@ CREATE TABLE schedule (
   waktu time NOT NULL,
   tanggal date NOT NULL,
   lokasi varchar(255) NOT NULL,
-  status enum('true','false','pending'),
+  status enum('Diterima','Ditolak','Tunggu'),
   NIM bigint NULL,
   fakultas int not null,
   FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas),
