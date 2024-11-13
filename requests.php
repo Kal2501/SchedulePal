@@ -21,9 +21,10 @@ $query = "SELECT users.NIM, fakultas.nama_fakultas, schedule.judul_acara, schedu
               where schedule.status ='Tunggu' LIMIT $perpage OFFSET $offset";
 $result = $conn->query($query);
 
-$totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule");
+$totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule WHERE status = 'Tunggu'");
 $totalitems = $totalitemsquery->fetch_assoc()['total'];
 $totalpages = ceil($totalitems / $perpage);
+
 ?>
 
 <!DOCTYPE html>
