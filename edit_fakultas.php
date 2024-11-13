@@ -13,7 +13,7 @@ $sql = "SELECT nama_fakultas from fakultas where id_fakultas = '$id'";
 $hasil = $conn->query($sql);
 $namaFakultas = [];
 $namaFakultas = $hasil->fetch_assoc();
-var_dump($namaFakultas);
+// var_dump($namaFakultas);
 $namaBaru;
 
 if (isset($_POST['value'])) {
