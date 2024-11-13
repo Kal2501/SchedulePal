@@ -1,3 +1,8 @@
+<?php
+// if (isset($_GET['logOut'])) {
+//     logOut();
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,7 +53,7 @@
             </a>
         </div>
         <div class="lower-nav">
-            <a class="logout-button" href="logOut.php">
+            <a class="logout-button" href="home.php?logOut=true">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
                     fill="#8B5CF6">
                     <path
