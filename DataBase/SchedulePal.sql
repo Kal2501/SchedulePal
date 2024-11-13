@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `fakultas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `fakultas` (
-  `id_fakultas` int NOT NULL,
+  `id_fakultas` int NOT NULL AUTO_INCREMENT,
   `nama_fakultas` varchar(50) NOT NULL,
   PRIMARY KEY (`id_fakultas`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,8 +61,8 @@ CREATE TABLE `schedule` (
   PRIMARY KEY (`id_acara`),
   KEY `fakultas` (`fakultas`),
   KEY `NIM` (`NIM`),
-  CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`fakultas`) REFERENCES `fakultas` (`id_fakultas`),
-  CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`NIM`) REFERENCES `users` (`NIM`) ON DELETE SET NULL ON UPDATE CASCADE
+  CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`fakultas`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE,
+  CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`NIM`) REFERENCES `users` (`NIM`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,14 +72,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` (`id_acara`, `judul_acara`, `deskripsi`, `waktu`, `tanggal`, `lokasi`, `status`, `NIM`, `fakultas`) 
-VALUES
-(7, 'Workshop AI', 'Pelatihan tentang dasar-dasar Artificial Intelligence.', '09:00:00', '2024-11-15', 'Ruang Seminar Fakultas Teknik', 'Tunggu', 12345678901, 1),
-(8, 'Hackathon', 'Lomba coding selama 24 jam untuk mahasiswa.', '08:00:00', '2024-12-01', 'Auditorium Fakultas Ilmu Komputer', 'Tunggu', 12345678904, 1),
-(9, 'Seminar Ekonomi', 'Seminar tentang perkembangan ekonomi global.', '13:00:00', '2024-12-10', 'Aula Fakultas Ekonomi', 'Tunggu', 12345678903, 3),
-(10, 'Pelatihan Hukum', 'Pelatihan keterampilan hukum bagi mahasiswa.', '10:00:00', '2024-11-20', 'Ruang Diskusi Fakultas Hukum', 'Tunggu', 12345678905, 4),
-(11, 'Kuliah Umum Kedokteran', 'Kuliah umum dengan tema kesehatan global.', '14:00:00', '2024-11-25', 'Ruang Kuliah Fakultas Kedokteran', 'Tunggu', 12345678904, 5),
-(12, 'Pelatihan Hukum', 'Pelatihan keterampilan hukum bagi mahasiswa.', '10:00:00', '2024-11-20', 'Ruang Diskusi Fakultas Hukum', 'Tunggu', 12345678905, 4);
+INSERT INTO `schedule` VALUES (7,'Workshop AI','Pelatihan tentang dasar-dasar Artificial Intelligence.','09:00:00','2024-11-15','Ruang Seminar Fakultas Teknik','Tunggu',12345678901,1),(8,'Hackathon','Lomba coding selama 24 jam untuk mahasiswa.','08:00:00','2024-12-01','Auditorium Fakultas Ilmu Komputer','Tunggu',12345678904,1),(9,'Seminar Ekonomi','Seminar tentang perkembangan ekonomi global.','13:00:00','2024-12-10','Aula Fakultas Ekonomi','Tunggu',12345678903,3),(10,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4),(11,'Kuliah Umum Kedokteran','Kuliah umum dengan tema kesehatan global.','14:00:00','2024-11-25','Ruang Kuliah Fakultas Kedokteran','Tunggu',12345678904,5),(12,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4);
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +91,7 @@ CREATE TABLE `users` (
   `role` enum('user','admin') NOT NULL DEFAULT 'user',
   PRIMARY KEY (`NIM`),
   KEY `fakultas` (`fakultas`),
-  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`fakultas`) REFERENCES `fakultas` (`id_fakultas`)
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`fakultas`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -121,5 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-
--- Dump completed on 2024-11-12 14:34:53
+-- Dump completed on 2024-11-13 14:19:28

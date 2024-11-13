@@ -8,6 +8,10 @@ if (!isset($user)) {
     header('Location: login.php');
 }
 
+if (isset($_GET['logOut'])) {
+    logOut();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
