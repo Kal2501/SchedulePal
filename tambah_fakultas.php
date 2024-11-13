@@ -8,10 +8,10 @@ if (!isset($user)) {
     header('Location: login.php');
 }
 
-if (isset($_POST['id']) && isset($_POST['nama'])) {
-    $id = $_POST['id'];
+if (isset($_POST['nama'])) {
+    // $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $hasil = tambahFakultas($id, $nama, $conn);
+    $hasil = tambahFakultas($nama, $conn);
     echo "<script>alert('" . $hasil['message'] . "')</script>";
     echo "<script>window.location.href='fakultas.php';</script>";
 }

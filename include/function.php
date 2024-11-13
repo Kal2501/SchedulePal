@@ -29,17 +29,17 @@ function editFakultas($id, $nama, $conn)
 
 }
 
-function tambahFakultas($id, $nama, $conn)
+function tambahFakultas($nama, $conn)
 {
-  $sql = "SELECT * FROM fakultas WHERE id_fakultas='$id'";
-  $hasil = mysqli_query($conn, $sql);
-  if (isset(mysqli_fetch_assoc($hasil)['id_fakultas'])) {
-    return ["message" => "Fakultas sudah ada"];
-  } else {
-    $sql = "INSERT INTO fakultas (id_fakultas, nama_fakultas) VALUES ('$id', '$nama')";
-    mysqli_query($conn, $sql);
-    return ["message" => "Fakultas berhasil ditambahkan"];
-  }
+  // $sql = "SELECT * FROM fakultas WHERE id_fakultas='$id'";
+  // $hasil = mysqli_query($conn, $sql);
+  // if (isset(mysqli_fetch_assoc($hasil)['id_fakultas'])) {
+  //   return ["message" => "Fakultas sudah ada"];
+  // } else {
+  $sql = "INSERT INTO fakultas (nama_fakultas) VALUES ('$nama')";
+  mysqli_query($conn, $sql);
+  return ["message" => "Fakultas berhasil ditambahkan"];
+  // }
 }
 
 function login($conn, $username, $password)
