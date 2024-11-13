@@ -17,7 +17,7 @@
             <a href="schedulefak.php">Schedule Fakultas</a>
         </div>
         <div class="form">
-            <a href="./logOut.php" class="masuk">Masuk</a>
+            <a href="./login.php" class="masuk">Masuk</a>
             <a href="./signup.php" class="daftar">Daftar</a>
         </div>
     </nav>
