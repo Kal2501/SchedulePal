@@ -34,7 +34,7 @@ if (isset($_POST['id']) && isset($_POST['nama'])) {
         <div class="header">
             <h1>Tambah Fakultas</h1>
             <a href="fakultas.php">
-                <button>Kembali</button>
+                <button class="kembali">Kembali</button>
             </a>
         </div>
         <form action="" method="post" class="form-input">

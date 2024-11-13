@@ -12,12 +12,12 @@
     <nav>
         <img src="img/Logo.svg" alt="logo-schedulepal" width="185px">
         <div class="nav-links">
-            <a href="home.php">Beranda</a>
+            <a href="index.php">Beranda</a>
             <a href="create.php">Buat Schedule</a>
             <a href="schedulefak.php">Schedule Fakultas</a>
         </div>
         <div class="form">
-            <a href="./logOut.php" class="masuk">Masuk</a>
+            <a href="./login.php" class="masuk">Masuk</a>
             <a href="./signup.php" class="daftar">Daftar</a>
         </div>
     </nav>
