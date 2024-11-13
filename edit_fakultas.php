@@ -34,15 +34,17 @@ if (isset($_POST['value'])) {
     ?>
     <div class="content">
         <div class="header">
-            <h1>Edit Fakultas</h1>
+            <h1>Ubah Fakultas</h1>
             <a href="fakultas.php">
-                <button>Kembali</button>
+                <button class="kembali">Kembali</button>
             </a>
         </div>
         <form action="" method="post" class="form-input">
-            <input type="text" placeholder="Nama Fakultas" name="value">
-            <button>Edit</button>
+            <p>ID Fakultas</p>
+            <input type="text" placeholder="Nama Fakultas" name="value" required>
+            <button>Ubah</button>
         </form>
     </div>
 </body>
+
 </html>

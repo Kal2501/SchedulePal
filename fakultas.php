@@ -40,7 +40,7 @@ $id;
         <div class="header">
             <h1>Fakultas</h1>
             <a href="tambah_fakultas.php">
-                <button>Tambah</button>
+                <button class="tambah">Tambah</button>
             </a>
         </div>
         <table class="table">
