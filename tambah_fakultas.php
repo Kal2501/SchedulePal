@@ -38,7 +38,7 @@ if (isset($_POST['id']) && isset($_POST['nama'])) {
             </a>
         </div>
         <form action="" method="post" class="form-input">
-            <input type="number" min="1" max="99999" placeholder="ID Fakultas" name="id">
+            <!-- <input type="number" min="1" max="99999" placeholder="ID Fakultas" name="id"> -->
             <input type="text" placeholder="Nama Fakultas" name="nama" required>
             <button>Tambah</button>
         </form>

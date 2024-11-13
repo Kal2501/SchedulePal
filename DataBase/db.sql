@@ -3,7 +3,7 @@ CREATE DATABASE schedulepal;
 USE schedulepal;
 
 CREATE TABLE fakultas (
-  id_fakultas int NOT NULL primary key,
+  id_fakultas int NOT NULL primary key auto_increment,
   nama_fakultas varchar(50) NOT NULL
 );
 
@@ -14,7 +14,7 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   role enum('user','admin') NOT NULL DEFAULT 'user',
   PRIMARY KEY (NIM),
-  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas)
+  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE schedule (
