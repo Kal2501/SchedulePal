@@ -14,7 +14,7 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   role enum('user','admin') NOT NULL DEFAULT 'user',
   PRIMARY KEY (NIM),
-  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE ON UPDATE CASCADE
+  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE
 );
 
 CREATE TABLE schedule (
@@ -27,6 +27,6 @@ CREATE TABLE schedule (
   status enum('Diterima','Ditolak','Tunggu'),
   NIM bigint NULL,
   fakultas int not null,
-  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas),
-  FOREIGN KEY (NIM) REFERENCES users(NIM) ON DELETE SET NULL ON UPDATE CASCADE 
+  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE,
+  FOREIGN KEY (NIM) REFERENCES users(NIM) ON DELETE CASCADE ON UPDATE CASCADE
 );
