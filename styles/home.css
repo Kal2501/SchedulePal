@@ -104,3 +104,53 @@
     font-size: 20px;
   }
 }
+@media screen and (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    padding: 15rem 5rem 5rem 5rem;
+    height: 100vh;
+    align-items: center;
+  }
+  .content div {
+    align-items: center;
+  }
+  .content h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .content div a {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+  .content img {
+    display: none;
+  }
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+    svg {
+      width: 5rem;
+    }
+  }
+  .card {
+    width: 75%;
+    height: 75%;
+    padding: 2rem;
+  }
+  .content-bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: fit-content;
+    padding: 7.5rem 2rem;
+    gap: 0;
+    img {
+      width: 15rem;
+    }
+    p {
+      font-size: 0.75rem;
+    }
+  }
+}

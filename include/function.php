@@ -37,7 +37,7 @@ function tambahFakultas($nama, $conn)
   //   return ["message" => "Fakultas sudah ada"];
   // } else {
   $sql = "INSERT INTO fakultas (nama_fakultas) VALUES ('$nama')";
-  mysqli_query($conn, $sql);
+  mysqli_query(mysql: $conn, query: $sql);
   return ["message" => "Fakultas berhasil ditambahkan"];
   // }
 }

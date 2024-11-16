@@ -27,3 +27,17 @@ footer {
     margin-bottom: 0.5rem;
   }
 }
+.mobile {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  footer {
+    display: none;
+  }
+  .mobile {
+    flex-direction: column;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+  }
+}

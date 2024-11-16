@@ -72,3 +72,52 @@ nav {
   border-radius: 100px 50px 100px 100px;
   transition: 0.15s;
 }
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  border-radius: 0.25rem;
+  margin: 5px 7.5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: var(--black);
+}
+@media screen and (max-width: 900px) {
+  .hamburger {
+    display: block;
+    order: 3;
+    transition: 0.15s;
+  }
+  .hamburger.active {
+    transform: translateY(8px) rotate(90deg);
+    transition: 0.15s;
+  }
+  nav {
+    padding: 1rem 2rem;
+  }
+  .nav-links {
+    position: fixed;
+    left: -100%;
+    top: 90px;
+    gap: 0;
+    flex-direction: column;
+    background-color: var(--base-color);
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .nav-links a {
+    margin: 2rem;
+  }
+  .nav-links.active {
+    left: 0;
+    background-color: var(--secondary);
+  }
+  .form {
+    display: none;
+  }
+}

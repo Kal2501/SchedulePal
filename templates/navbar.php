@@ -20,6 +20,11 @@
             <a href="./login.php" class="masuk">Masuk</a>
             <a href="./signup.php" class="daftar">Daftar</a>
         </div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
     </nav>
 </body>
 <script src="scripts/navbar.js"></script>

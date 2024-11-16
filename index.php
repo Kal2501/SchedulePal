@@ -15,7 +15,7 @@
     <div class="content">
         <div>
             <h1>Temukan <b>schedule</b> <br> fakultas anda disini</h1>
-            <a href="">Daftar dan Coba</a>
+            <a href="signup.php">Daftar dan Coba</a>
         </div>
         <img src="img/undraw_team_up_re_84ok.svg" alt="">
     </div>
