@@ -13,9 +13,9 @@
     require 'templates/navbar.php';
     ?>
     <form action="">
-        <h1>Buat Schedule</h1>
+        <h1>Edit Schedule</h1>
         <h2>Details</h2>
-        <input type="text" placeholder="Judul Acara">
+        <p class="prev-judul">Judul Acara</p>
         <input type="text" placeholder="Deskripsi Acara">
         <input type="text" placeholder="Lokasi">
         <h2>Tanggal dan Waktu</h2>

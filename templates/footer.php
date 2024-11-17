@@ -49,7 +49,7 @@
             <p>Kalingga Dwindra Putraka <br>
                 Muh Ghazy Daffa Sampe <br>
                 Nayla Zeanita Putri Nur Ain <br>
-                Muhammad Nur Ramadahan <br>
+                Muhammad Nur Ramadhan <br>
                 Muhammad Ibnu Ansari</p>
         </div>
         <div>

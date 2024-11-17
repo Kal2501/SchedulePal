@@ -93,7 +93,7 @@ nav {
     transition: 0.15s;
   }
   .hamburger.active {
-    transform: translateY(8px) rotate(90deg);
+    transform: translateY(0px) rotate(-90deg);
     transition: 0.15s;
   }
   nav {
@@ -102,7 +102,7 @@ nav {
   .nav-links {
     position: fixed;
     left: -100%;
-    top: 90px;
+    top: 75px;
     gap: 0;
     flex-direction: column;
     background-color: var(--base-color);

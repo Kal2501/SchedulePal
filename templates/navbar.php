@@ -15,7 +15,9 @@
             <a href="index.php">Beranda</a>
             <a href="create.php">Buat Schedule</a>
             <a href="schedulefak.php">Schedule Fakultas</a>
+            <!-- <a class="profile-mobile" href="profile.php">Profile</a> -->
         </div>
+        <!-- <a class="profile-desk" href="profile.php"><img src="" alt=""></a> -->
         <div class="form">
             <a href="./login.php" class="masuk">Masuk</a>
             <a href="./signup.php" class="daftar">Daftar</a>

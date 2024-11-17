@@ -35,6 +35,7 @@ footer {
     display: none;
   }
   .mobile {
+    width: 100%;
     flex-direction: column;
     display: flex;
     padding: 1rem;
