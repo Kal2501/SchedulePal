@@ -40,5 +40,8 @@ footer {
     display: flex;
     padding: 1rem;
     align-items: center;
+    p {
+      font-size: 0.75rem;
+    }
   }
 }

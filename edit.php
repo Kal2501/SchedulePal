@@ -13,15 +13,15 @@
     require 'templates/navbar.php';
     ?>
     <form action="">
-        <h1>Edit Schedule</h1>
+        <h1>Ubah Schedule</h1>
         <h2>Details</h2>
         <p class="prev-judul">Judul Acara</p>
-        <input type="text" placeholder="Deskripsi Acara">
-        <input type="text" placeholder="Lokasi">
+        <input type="text" placeholder="Deskripsi Acara" required>
+        <input type="text" placeholder="Lokasi" required>
         <h2>Tanggal dan Waktu</h2>
-        <input type="date" placeholder="Tanggal">
-        <input type="time" name="" id="">
-        <input type="button" value="Buat">
+        <input type="date" placeholder="Tanggal" required>
+        <input type="time" name="" id="" required>
+        <input type="button" value="Ubah">
     </form>
     <?php
     require 'templates/footer.php';

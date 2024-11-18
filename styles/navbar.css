@@ -24,9 +24,11 @@ nav {
   align-items: center;
   background-color: var(--secondary);
   padding: 1rem 3rem;
+  box-shadow: 0px 0px 20px rgba(139, 92, 246, 20%);
   img {
     width: 150px;
   }
+  z-index: 1000;
 }
 .nav-links {
   display: flex;
@@ -86,6 +88,12 @@ nav {
   transition: all 0.3s ease-in-out;
   background-color: var(--black);
 }
+.profile-desk img {
+  width: 50px;
+}
+.profile-mobile {
+  display: none;
+}
 @media screen and (max-width: 900px) {
   .hamburger {
     display: block;
@@ -118,6 +126,12 @@ nav {
     background-color: var(--secondary);
   }
   .form {
+    display: none;
+  }
+  .profile-mobile {
+    display: block;
+  }
+  .profile-desk {
     display: none;
   }
 }

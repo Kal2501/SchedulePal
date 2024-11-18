@@ -15,8 +15,8 @@
     <form action="">
         <h1>Buat Schedule</h1>
         <h2>Details</h2>
-        <input type="text" placeholder="Judul Acara">
-        <input type="text" placeholder="Deskripsi Acara">
+        <input type="text" placeholder="Judul Acara" required>
+        <input type="text" placeholder="Deskripsi Acara" required>
         <input type="text" placeholder="Lokasi">
         <h2>Tanggal dan Waktu</h2>
         <input type="date" placeholder="Tanggal">

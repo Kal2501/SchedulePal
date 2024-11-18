@@ -90,7 +90,9 @@
                 </clipPath>
             </defs>
         </svg>
-        Copyright © 2024 SchedulePal
+        <p>
+            Copyright © 2024 SchedulePal
+        </p>
     </footer>
 </body>
 
