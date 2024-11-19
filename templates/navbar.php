@@ -29,7 +29,6 @@
             }
             ?>
         </div>
-        <!-- <a class="profile-desk" href="profile.php"><img src="" alt=""></a> -->
         <div class="form">
             <?php
             if (!isset($_SESSION['user'])) {
@@ -38,6 +37,7 @@
             }
             ?>
         </div>
+        <!-- <a class="profile-desk" href="profile.php"><img src="img/pattern.png" alt=""></a> -->
         <div class="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>

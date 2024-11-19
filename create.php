@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="POST">
         <h1>Buat Schedule</h1>
         <h2>Details</h2>
-        <input type="text" placeholder="Judul Acara" name="judul">
-        <input type="text" placeholder="Deskripsi Acara" name="deskripsi">
+        <input type="text" placeholder="Judul Acara" name="judul" required>
+        <input type="text" placeholder="Deskripsi Acara" name="deskripsi" required>
         <input type="text" placeholder="Lokasi" name="lokasi">
         <h2>Tanggal dan Waktu</h2>
         <input type="date" placeholder="Tanggal" name="tanggal">

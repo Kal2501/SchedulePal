@@ -12,7 +12,7 @@
   --negative-hover: #dc2626;
 }
 body {
-  background-color: var(--secondary);
+  background-color: var(--background-admin);
   display: flex;
   align-items: center;
   flex-direction: column;

@@ -94,8 +94,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   gap: 3rem;
   border-radius: 15px;
+  transition: 0.15s;
   p {
     text-align: center;
     color: var(--input);
@@ -103,6 +105,10 @@
     letter-spacing: -0.05rem;
     font-size: 20px;
   }
+}
+.card:hover {
+  scale: 1.1;
+  z-index: 0;
 }
 @media screen and (max-width: 900px) {
   .content {
@@ -138,6 +144,9 @@
     width: 75%;
     height: 75%;
     padding: 2rem;
+  }
+  .card:hover {
+    width: 80%;
   }
   .content-bottom {
     flex-direction: column;
