@@ -5,7 +5,7 @@ include 'include/function.php';
 session_start();
 
 if (isset($_SESSION['user'])) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -111,4 +111,10 @@ function jumlahScheduleTolak($conn)
   $row = mysqli_fetch_assoc($result);
   return $row['COUNT(status)'];
 }
-?>
+
+function tambahSchedule($conn, $judul_acara, $deskripsi, $waktu, $tanggal, $lokasi, $nim, $fakultas)
+{
+  $sql = "INSERT INTO schedule (judul_acara, deskripsi, waktu, tanggal, lokasi, status, nim, fakultas) VALUES ('$judul_acara', '$deskripsi', '$waktu', '$tanggal', '$lokasi', 'Tunggu', '$nim', '$fakultas')";
+  $result = mysqli_query($conn, $sql);
+  return;
+} ?>

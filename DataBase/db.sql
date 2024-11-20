@@ -18,7 +18,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE schedule (
-  id_acara int NOT NULL primary key,
+  id_acara int NOT NULL primary key auto_increment,
   judul_acara varchar(50) NOT NULL,
   deskripsi varchar(255) NOT NULL,
   waktu time NOT NULL,
