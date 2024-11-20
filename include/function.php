@@ -126,4 +126,66 @@ function fotoProfile($conn, $NIM)
   $row = mysqli_fetch_assoc($result);
   return $row['foto'];
 }
+
+function ambilDaftarFakultas($conn) {
+    $query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas 
+              FROM schedule s
+              JOIN fakultas f ON s.fakultas = f.id_fakultas";
+    $result = $conn->query($query);
+
+    $daftar_fakultas = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $daftar_fakultas[] = [
+                'id' => $row['id_fakultas'],
+                'nama' => $row['nama_fakultas']
+            ];
+        }
+    }
+    return $daftar_fakultas;
+}
+
+function hitungTotalData($conn, $fakultas) {
+    $query = "SELECT COUNT(*) AS total FROM schedule";
+    if (!empty($fakultas)) {
+        $query .= " WHERE fakultas = ?";
+    }
+    $stmt = $conn->prepare($query);
+    if (!empty($fakultas)) {
+        $stmt->bind_param('s', $fakultas);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['total'];
+}
+
+function ambilschedule($conn, $fakultas, $limit, $offset) {
+    $query = "SELECT * FROM schedule";
+    if (!empty($fakultas)) {
+        $query .= " WHERE fakultas = ?";
+    }
+    $query .= " LIMIT $limit OFFSET $offset";
+
+    $stmt = $conn->prepare($query);
+    if (!empty($fakultas)) {
+        $stmt->bind_param('s', $fakultas);
+    }
+    $stmt->execute();
+    return $stmt->get_result();
+}
+
+function tampilkanHalaman($page, $total_pages, $fakultas) {
+    if ($page > 1) {
+        echo '<a href="?page=' . ($page - 1) . '&fakultas=' . htmlspecialchars($fakultas) . '">';
+        echo '<button type="button">Sebelumnya</button></a>';
+    }
+
+    echo '<p>Page ' . $page . ' of ' . $total_pages . '</p>';
+
+    if ($page < $total_pages) {
+        echo '<a href="?page=' . ($page + 1) . '&fakultas=' . htmlspecialchars($fakultas) . '">';
+        echo '<button type="button">Berikutnya</button></a>';
+    }
+}
 ?>
