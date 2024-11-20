@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+body {
+  height: 100%;
+}
 footer {
   background-color: var(--primary);
   padding: 4rem 10rem 6rem 10rem;

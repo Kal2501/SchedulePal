@@ -2,9 +2,9 @@
 include 'include/connection.php';
 include 'include/function.php';
 
-$limit = 5; 
-$page = isset($_GET['page']) ? (int)$_GET['page'] : 1; 
-$offset = ($page - 1) * $limit; 
+$limit = 5;
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$offset = ($page - 1) * $limit;
 
 
 $fakultas_query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas 
@@ -69,11 +69,15 @@ $result = $stmt->get_result();
 </head>
 
 <body>
-    
+
     <?php include 'templates/navbar.php'; ?>
 
     <div class="content">
-        
+
+
+        <div>
+            <h1>Schedule Fakultas</h1>
+        </div>
         <div class="filter">
             <form action="" method="GET">
                 <?php foreach ($fakultas_list as $f): ?>
@@ -85,12 +89,8 @@ $result = $stmt->get_result();
             </form>
         </div>
 
-        <div>
-            <h1>Schedule Fakultas</h1>
-        </div>
-
         <?php
-        
+
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 ?>
@@ -129,4 +129,5 @@ $result = $stmt->get_result();
 
     <?php include 'templates/footer.php'; ?>
 </body>
+
 </html>

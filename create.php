@@ -9,7 +9,7 @@ if (!isset($user)) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $scheduleBaru = htmlspecialchars($_POST);
+    $scheduleBaru = ($_POST);
     tambahSchedule($conn, $scheduleBaru['judul'], $scheduleBaru['deskripsi'], $scheduleBaru['waktu'], $scheduleBaru['tanggal'], $scheduleBaru['lokasi'], $user['NIM'], $user['fakultas']);
     // $conn, $judul_acara, $deskripsi_acara, $waktu_acara, $tanggal_acara, $lokasi_acara, $nim, $fakultas
 }
