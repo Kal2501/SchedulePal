@@ -1,3 +1,14 @@
+<?PHP
+include 'include/connection.php';
+include 'include/function.php';
+
+if (isset($_SESSION['NIM'])) {
+    $fotoProfile = fotoProfile($conn, $_SESSION['NIM']);
+} else {
+    $fotoProfile = "profile\default.svg";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +48,11 @@
             }
             ?>
         </div>
-        <!-- <a class="profile-desk" href="profile.php"><img src="img/pattern.png" alt=""></a> -->
+        <?php
+        if (isset($_SESSION['user'])) {
+            echo '<a class="profile-desk" href="profile.php"><img src=".\profile\default.svg" alt=""></a>';
+        }
+        ?>
         <div class="hamburger">
             <span class="bar"></span>
             <span class="bar"></span>
