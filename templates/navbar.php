@@ -1,6 +1,5 @@
 <?PHP
 include 'include/connection.php';
-include 'include/function.php';
 
 if (isset($_SESSION['NIM'])) {
     $fotoProfile = fotoProfile($conn, $_SESSION['NIM']);
