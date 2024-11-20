@@ -1,6 +1,5 @@
 <?php
 include 'include/connection.php';
-include 'include/function.php';
 
 session_start();
 $user = $_SESSION['user'];

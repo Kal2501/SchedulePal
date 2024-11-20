@@ -31,11 +31,10 @@ h2 {
   height: 100%;
   width: 100%;
   margin-top: 125px;
-  margin-bottom: 100px;
+  margin-bottom: 75px;
   padding-left: 10rem;
   padding-right: 10rem;
   gap: 1rem;
-  margin-bottom: 5rem;
 }
 .card {
   display: flex;
