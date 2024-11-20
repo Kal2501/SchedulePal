@@ -126,7 +126,8 @@ function fotoProfile($conn, $NIM)
   $row = mysqli_fetch_assoc($result);
   return $row['foto'];
 }
-function ambilDaftarFakultas($conn) {
+function ambilDaftarFakultas($conn)
+{
   $query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas 
             FROM schedule s
             JOIN fakultas f ON s.fakultas = f.id_fakultas";
@@ -134,24 +135,25 @@ function ambilDaftarFakultas($conn) {
 
   $daftar_fakultas = [];
   if ($result && $result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-          $daftar_fakultas[] = [
-              'id' => $row['id_fakultas'],
-              'nama' => $row['nama_fakultas']
-          ];
-      }
+    while ($row = $result->fetch_assoc()) {
+      $daftar_fakultas[] = [
+        'id' => $row['id_fakultas'],
+        'nama' => $row['nama_fakultas']
+      ];
+    }
   }
   return $daftar_fakultas;
 }
 
-function hitungTotalData($conn, $fakultas) {
+function hitungTotalData($conn, $fakultas)
+{
   $query = "SELECT COUNT(*) AS total FROM schedule WHERE status='Diterima'";
   if (!empty($fakultas)) {
-      $query .= " AND fakultas = ?";
+    $query .= " AND fakultas = ?";
   }
   $stmt = $conn->prepare($query);
   if (!empty($fakultas)) {
-      $stmt->bind_param('s', $fakultas);
+    $stmt->bind_param('s', $fakultas);
   }
   $stmt->execute();
   $result = $stmt->get_result();
@@ -159,36 +161,46 @@ function hitungTotalData($conn, $fakultas) {
   return $row ? $row['total'] : 0;
 }
 
-function ambilschedule($conn, $fakultas, $limit, $offset) {
+function ambilschedule($conn, $fakultas, $limit, $offset)
+{
   $query = "SELECT * FROM schedule WHERE status='Diterima'";
   if (!empty($fakultas)) {
-      $query .= " AND fakultas = ?";
+    $query .= " AND fakultas = ?";
   }
   $query .= " LIMIT ? OFFSET ?";
 
   $stmt = $conn->prepare($query);
   if (!empty($fakultas)) {
-      $stmt->bind_param('sii', $fakultas, $limit, $offset);
+    $stmt->bind_param('sii', $fakultas, $limit, $offset);
   } else {
-      $stmt->bind_param('ii', $limit, $offset);
+    $stmt->bind_param('ii', $limit, $offset);
   }
   $stmt->execute();
   return $stmt->get_result();
 }
 
-function tampilkanHalaman($page, $total_pages, $fakultas) {
+function tampilkanHalaman($page, $total_pages, $fakultas)
+{
   $fakultas_encoded = htmlspecialchars($fakultas);
 
   if ($page > 1) {
-      echo '<a href="?page=' . ($page - 1) . '&fakultas=' . $fakultas_encoded . '">';
-      echo '<button type="button">Sebelumnya</button></a>';
+    echo '<a href="?page=' . ($page - 1) . '&fakultas=' . $fakultas_encoded . '">';
+    echo '<button type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m14 7l-5 5l5 5" />
+                            </svg></button></a>';
   }
 
   echo '<p>Page ' . htmlspecialchars($page) . ' of ' . htmlspecialchars($total_pages) . '</p>';
 
   if ($page < $total_pages) {
-      echo '<a href="?page=' . ($page + 1) . '&fakultas=' . $fakultas_encoded . '">';
-      echo '<button type="button">Berikutnya</button></a>';
+    echo '<a href="?page=' . ($page + 1) . '&fakultas=' . $fakultas_encoded . '">';
+    echo '<button type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                                <g transform="translate(24 0) scale(-1 1)">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m14 7l-5 5l5 5" />
+                                </g>
+                            </svg></button></a>';
   }
 }
 ?>

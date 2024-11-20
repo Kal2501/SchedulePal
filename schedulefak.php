@@ -27,6 +27,9 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
     <?php require 'templates/navbar.php'; ?>
 
     <div class="content">
+        <div>
+            <h1>Jadwal Fakultas</h1>
+        </div>
         <div class="filter">
             <form action="" method="GET">
                 <?php foreach ($daftar_fakultas as $f): ?>
@@ -38,9 +41,6 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
             </form>
         </div>
 
-        <div>
-            <h1>Jadwal Fakultas</h1>
-        </div>
 
         <?php if ($jadwal->num_rows > 0): ?>
             <?php while ($row = $jadwal->fetch_assoc()): ?>
