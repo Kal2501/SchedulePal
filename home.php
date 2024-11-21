@@ -1,59 +1,72 @@
+<?php
+include 'include/connection.php';
+include 'include/function.php';
+
+session_start();
+$user = $_SESSION['user'];
+if (!isset($user)) {
+    header('Location: login.php');
+}
+
+if (isset($_GET['logOut'])) {
+    logOut();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/home.css">
+    <link rel="stylesheet" href="styles/home-admin.css">
     <title>Document</title>
 </head>
 
 <body>
     <?php
-    require 'templates/navbar.php';
+    include "templates/sidebar.php";
     ?>
     <div class="content">
-        <div>
-            <h1>Temukan <b>schedule</b> <br> fakultas anda disini</h1>
-            <a href="">Daftar dan Coba</a>
+        <div class="header">
+            <h1>Admin</h1>
         </div>
-        <img src="img/undraw_team_up_re_84ok.svg" alt="">
+        <div class="container">
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px"
+                    fill="#8B5CF6">
+                    <path
+                        d="M240-80q-50 0-85-35t-35-85v-560q0-50 35-85t85-35h440v640H240q-17 0-28.5 11.5T200-200q0 17 11.5 28.5T240-160h520v-640h80v720H240Zm120-240h240v-480H360v480Zm-80 0v-480h-40q-17 0-28.5 11.5T200-760v447q10-3 19.5-5t20.5-2h40Zm-80-480v487-487Z" />
+                </svg>
+                <div>
+                    <h2>Jumlah<br>Fakultas</h2>
+                    <p><?= hitungJumlahFakultas($conn) ?></p>
+                </div>
+            </div>
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px"
+                    fill="#8B5CF6">
+                    <path
+                        d="m424-318 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm280-590q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z" />
+                </svg>
+                <div>
+                    <h2>Schedule<br>Diterima</h2>
+                    <p><?= jumlahScheduleSetuju($conn) ?></p>
+                </div>
+            </div>
+            <div class="card">
+                <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px"
+                    fill="#8B5CF6">
+                    <path
+                        d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h168q13-36 43.5-58t68.5-22q38 0 68.5 22t43.5 58h168q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm280-590q13 0 21.5-8.5T510-820q0-13-8.5-21.5T480-850q-13 0-21.5 8.5T450-820q0 13 8.5 21.5T480-790ZM200-200v-560 560Z" />
+                </svg>
+                <div>
+                    <h2>Schedule<br>Ditolak</h2>
+                    <p><?= jumlahScheduleTolak($conn) ?></p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="card-container">
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" height="75px" viewBox="0 -960 960 960" width="75px" fill="#F5F3FF">
-                <path
-                    d="m612-550 141-142-28-28-113 113-57-57-28 29 85 85ZM120-160v-80h480v80H120Zm520-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-520-40v-80h252q7 22 16 42t22 38H120Zm0 160v-80h376q23 14 49 23.5t55 13.5v43H120Z" />
-            </svg>
-            <p>Schedule apa saja<br>di fakultas anda</p>
-        </div>
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" height="75px" viewBox="0 -960 960 960" width="75px" fill="#F5F3FF">
-                <path
-                    d="m612-550 141-142-28-28-113 113-57-57-28 29 85 85ZM120-160v-80h480v80H120Zm520-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-520-40v-80h252q7 22 16 42t22 38H120Zm0 160v-80h376q23 14 49 23.5t55 13.5v43H120Z" />
-            </svg>
-            <p>Akses gratis<br>cukup daftar</p>
-        </div>
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" height="75px" viewBox="0 -960 960 960" width="75px" fill="#F5F3FF">
-                <path
-                    d="m612-550 141-142-28-28-113 113-57-57-28 29 85 85ZM120-160v-80h480v80H120Zm520-280q-83 0-141.5-58.5T440-640q0-83 58.5-141.5T640-840q83 0 141.5 58.5T840-640q0 83-58.5 141.5T640-440Zm-520-40v-80h252q7 22 16 42t22 38H120Zm0 160v-80h376q23 14 49 23.5t55 13.5v43H120Z" />
-            </svg>
-            <p>Riwayat kegiatan<br>fakultas anda</p>
-        </div>
-    </div>
-    <div class="content-bottom">
-        <img src="img/web-logo.png" alt="">
-        <div>
-            <h1>About Dev</h1>
-            <p>Svelte adalah kelompok yang dibuat untuk membangun sebuah website schedule berbasis desktop. Website
-                SchedulePal ini dibangun atas dasar kepedulian kami terhadap mahasiswa-mahasiswa Universitas Mulawarman
-            </p>
-        </div>
-    </div>
-    <?php
-    require 'templates/footer.php';
-    ?>
 </body>
 
 </html>

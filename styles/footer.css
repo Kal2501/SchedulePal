@@ -4,6 +4,9 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
+body {
+  height: 100%;
+}
 footer {
   background-color: var(--primary);
   padding: 4rem 10rem 6rem 10rem;
@@ -25,5 +28,23 @@ footer {
     font-size: 12px;
     line-height: 16px;
     margin-bottom: 0.5rem;
+  }
+}
+.mobile {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  footer {
+    display: none;
+  }
+  .mobile {
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    p {
+      font-size: 0.75rem;
+    }
   }
 }

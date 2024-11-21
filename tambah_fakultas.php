@@ -8,10 +8,10 @@ if (!isset($user)) {
     header('Location: login.php');
 }
 
-if (isset($_POST['id']) && isset($_POST['nama'])) {
-    $id = $_POST['id'];
+if (isset($_POST['nama'])) {
+    // $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $hasil = tambahFakultas($id, $nama, $conn);
+    $hasil = tambahFakultas($nama, $conn);
     echo "<script>alert('" . $hasil['message'] . "')</script>";
     echo "<script>window.location.href='fakultas.php';</script>";
 }
@@ -34,11 +34,10 @@ if (isset($_POST['id']) && isset($_POST['nama'])) {
         <div class="header">
             <h1>Tambah Fakultas</h1>
             <a href="fakultas.php">
-                <button>Kembali</button>
+                <button class="kembali">Kembali</button>
             </a>
         </div>
         <form action="" method="post" class="form-input">
-            <input type="number" min="1" max="99999" placeholder="ID Fakultas" name="id">
             <input type="text" placeholder="Nama Fakultas" name="nama" required>
             <button>Tambah</button>
         </form>

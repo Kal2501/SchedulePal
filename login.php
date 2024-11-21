@@ -5,7 +5,7 @@ include 'include/function.php';
 session_start();
 
 if (isset($_SESSION['user'])) {
-    header('Location: home.php');
+    header('Location: index.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,10 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result['status']) {
         $_SESSION['user'] = $result;
         if ($result['role'] == 'admin') {
-            header('Location: index.php');
-        }
-        else {
             header('Location: home.php');
+        } else {
+            header('Location: index.php');
         }
     } else {
         echo "<script>alert('" . $result['message'] . "')</script>";
