@@ -119,3 +119,27 @@ h2 {
   border-radius: 10px;
   font-size: 0.9rem;
 }
+@media screen and (max-width: 900px) {
+  .content {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+  .profile {
+    flex-wrap: wrap;
+    gap: 1rem;
+    img {
+      width: 35px;
+    }
+  }
+  .profile a {
+    width: 100%;
+    text-align: center;
+  }
+  .profile-info div {
+    gap: 0.5rem;
+  }
+  .right {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
