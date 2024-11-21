@@ -27,15 +27,11 @@ if (isset($_SESSION['NIM'])) {
             if (isset($_SESSION['user'])) {
                 echo '<a href="create.php">Buat Schedule</a>';
                 echo '<a href="schedulefak.php">Schedule Fakultas</a>';
+                echo '<a class="profile-mobile" href="profile.php">Profile</a>';
             } else {
                 echo '<a href="login.php">Buat Schedule</a>';
                 echo '<a href="login.php">Schedule Fakultas</a>';
-            }
-            ?>
-            <?php
-            if (isset($_SESSION['user'])) {
-                // echo '<a class="profile-mobile" href="profile.php">Profile</a>';
-                echo '<a class="profile-mobile" href="logOutTest.php">Profile</a>';//test Navbar sesudah dan sebelum login
+                echo '<a class="profile-mobile" href="login.php">Profile</a>';
             }
             ?>
         </div>
