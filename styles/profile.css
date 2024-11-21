@@ -60,7 +60,7 @@ h2 {
   width: 122px;
   border-radius: 100%;
 }
-.profile-info {
+.profile-info form {
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -83,32 +83,51 @@ h2 {
   border-radius: 1rem;
   box-shadow: 0px 0px 20px rgba(139, 92, 246, 20%);
   gap: 5rem;
+  transition: 0.2s;
+}
+.card:hover {
+  scale: 1.05;
+  transition: 0.2s;
+  box-shadow: 0px 0px 20px rgba(139, 92, 246, 40%);
 }
 .right {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem;
+  gap: 4rem;
 }
 .left {
   display: flex;
   flex-direction: column;
+  width: 30vw;
   gap: 1rem;
+}
+.left p {
+  word-wrap: break-word;
 }
 .right div {
   display: flex;
   flex-direction: column;
-  padding: 0 1rem;
   gap: 1rem;
+}
+.date-times p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .edit {
   background-color: var(--primary);
   text-align: center;
   color: var(--secondary);
   border: none;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
   padding: 0.75rem 1.5rem;
   border-radius: 10px;
+  transition: 0.15s;
+}
+.edit:hover {
+  background-color: var(--primary-hover);
+  transition: 0.15s;
 }
 .delete {
   background-color: var(--negative);
@@ -117,7 +136,12 @@ h2 {
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 10px;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
+  transition: 0.15s;
+}
+.delete:hover {
+  background-color: var(--negative-hover);
+  transition: 0.15s;
 }
 @media screen and (max-width: 900px) {
   .content {
@@ -138,8 +162,29 @@ h2 {
   .profile-info div {
     gap: 0.5rem;
   }
-  .right {
-    flex-wrap: wrap;
+  .card {
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
     gap: 1rem;
+  }
+  .left {
+    width: 100%;
+    gap: 1rem;
+  }
+  .right {
+    flex-direction: column;
+    align-items: baseline;
+    width: 100%;
+    gap: 1rem;
+  }
+  .aksi {
+    width: 100%;
+  }
+  .edit {
+    width: 100%;
+  }
+  .delete {
+    width: 100%;
   }
 }
