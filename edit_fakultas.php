@@ -9,6 +9,11 @@ if (!isset($user)) {
 }
 
 $id = $_GET['id'];
+$sql = "SELECT nama_fakultas from fakultas where id_fakultas = '$id'";
+$hasil = $conn->query($sql);
+$namaFakultas = [];
+$namaFakultas = $hasil->fetch_assoc();
+// var_dump($namaFakultas);
 $namaBaru;
 
 if (isset($_POST['value'])) {
@@ -34,15 +39,17 @@ if (isset($_POST['value'])) {
     ?>
     <div class="content">
         <div class="header">
-            <h1>Edit Fakultas</h1>
+            <h1>Ubah Fakultas</h1>
             <a href="fakultas.php">
-                <button>Kembali</button>
+                <button class="kembali">Kembali</button>
             </a>
         </div>
         <form action="" method="post" class="form-input">
-            <input type="text" placeholder="Nama Fakultas" name="value">
-            <button>Edit</button>
+            <p>ID Fakultas : <?= $id ?></p>
+            <input type="text" placeholder="<?= $namaFakultas['nama_fakultas'] ?>" name="value" required>
+            <button>Ubah</button>
         </form>
     </div>
 </body>
+
 </html>
