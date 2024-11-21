@@ -81,19 +81,20 @@ function hitungJumlahFakultas($conn)
   return $row['jumlah'];
 }
 
-function requestSchedule($id_acara = null, $status = null, $conn = null) 
-    if ($id_acara !== null && $status !== null && $conn !== null) {
-        $query = "UPDATE schedule SET status = ? WHERE id_acara = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("si", $status, $id_acara);
-        
-        if ($stmt->execute()) {
-            $stmt->close();
-            return true;
-        }
-        $stmt->close();
-        return false;
+function requestSchedule($id_acara = null, $status = null, $conn = null)
+{
+  if ($id_acara !== null && $status !== null && $conn !== null) {
+    $query = "UPDATE schedule SET status = ? WHERE id_acara = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("si", $status, $id_acara);
+
+    if ($stmt->execute()) {
+      $stmt->close();
+      return true;
     }
+    $stmt->close();
+    return false;
+  }
 }
 function jumlahScheduleSetuju($conn)
 {
@@ -111,73 +112,77 @@ function jumlahScheduleTolak($conn)
   return $row['COUNT(status)'];
 }
 
-function getUserProfile($conn, $NIM) {
-    $sql = "SELECT u.NIM, u.username, u.foto, f.nama_fakultas 
+function getUserProfile($conn, $NIM)
+{
+  $sql = "SELECT u.NIM, u.username, u.foto, f.nama_fakultas 
             FROM users u 
             JOIN fakultas f ON u.fakultas = f.id_fakultas 
             WHERE u.NIM = ?";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $NIM);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc();
-    }
-    return null;
+
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $NIM);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows > 0) {
+    return $result->fetch_assoc();
+  }
+  return null;
 }
 
-function getUserSchedules($conn, $NIM) {
-    $sql = "SELECT * FROM schedule WHERE NIM = ? ORDER BY tanggal DESC, waktu DESC";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $NIM);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    $schedules = [];
-    while ($row = $result->fetch_assoc()) {
-        $schedules[] = $row;
-    }
-    return $schedules;
+function getUserSchedules($conn, $NIM)
+{
+  $sql = "SELECT * FROM schedule WHERE NIM = ? ORDER BY tanggal DESC, waktu DESC";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $NIM);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  $schedules = [];
+  while ($row = $result->fetch_assoc()) {
+    $schedules[] = $row;
+  }
+  return $schedules;
 }
 
-function updateProfilePicture($conn, $NIM, $file) {
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-    $maxFileSize = 5 * 1024 * 1024; // 5MB
-    
-    if (!in_array($file['type'], $allowedTypes)) {
-        return ["status" => false, "message" => "Invalid file type. Only JPG, PNG, and GIF are allowed."];
-    }
-    
-    if ($file['size'] > $maxFileSize) {
-        return ["status" => false, "message" => "File is too large. Maximum size is 5MB."];
-    }
-    
-    $fileName = $NIM . '_' . time() . '_' . basename($file['name']);
-    $uploadPath = 'profile/' . $fileName;
-    
-    if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
-        $sql = "UPDATE users SET foto = ? WHERE NIM = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $fileName, $NIM);
-        
-        if ($stmt->execute()) {
-            return ["status" => true, "message" => "Profile picture updated successfully"];
-        }
-    }
-    
-    return ["status" => false, "message" => "Failed to update profile picture"];
-}
+function updateProfilePicture($conn, $NIM, $file)
+{
+  $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  $maxFileSize = 5 * 1024 * 1024; // 5MB
 
-function deleteSchedule($conn, $id_acara, $NIM) {
-    $sql = "DELETE FROM schedule WHERE id_acara = ? AND NIM = ?";
+  if (!in_array($file['type'], $allowedTypes)) {
+    return ["status" => false, "message" => "Invalid file type. Only JPG, PNG, and GIF are allowed."];
+  }
+
+  if ($file['size'] > $maxFileSize) {
+    return ["status" => false, "message" => "File is too large. Maximum size is 5MB."];
+  }
+
+  $fileName = $NIM . '_' . time() . '_' . basename($file['name']);
+  $uploadPath = 'profile/' . $fileName;
+
+  if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+    $sql = "UPDATE users SET foto = ? WHERE NIM = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $id_acara, $NIM);
-    
+    $stmt->bind_param("si", $fileName, $NIM);
+
     if ($stmt->execute()) {
-        return ["status" => true, "message" => "Schedule deleted successfully"];
+      return ["status" => true, "message" => "Profile picture updated successfully"];
     }
-    return ["status" => false, "message" => "Failed to delete schedule"];
+  }
+
+  return ["status" => false, "message" => "Failed to update profile picture"];
+}
+
+function deleteSchedule($conn, $id_acara, $NIM)
+{
+  $sql = "DELETE FROM schedule WHERE id_acara = ? AND NIM = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("ii", $id_acara, $NIM);
+
+  if ($stmt->execute()) {
+    return ["status" => true, "message" => "Schedule deleted successfully"];
+  }
+  return ["status" => false, "message" => "Failed to delete schedule"];
 }
 ?>
