@@ -56,9 +56,7 @@ $schedules = getUserSchedules($conn, $NIM);
                     </div>
                 </form>
             </div>
-            <form action="logOut.php" method="POST">
-                <input type="submit" value="Logout">
-            </form>
+            <a class="logout-button" href="home.php?logOut=true">Logout</a>
         </div>
         <h1>Schedule yang Anda Buat</h1>
         <?php if (empty($schedules)): ?>
