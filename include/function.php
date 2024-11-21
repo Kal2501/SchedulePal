@@ -186,14 +186,22 @@ function tampilkanHalaman($page, $total_pages, $fakultas)
 
   if ($page > 1) {
     echo '<a href="?page=' . ($page - 1) . '&fakultas=' . $fakultas_encoded . '">';
-    echo '<button type="button">Sebelumnya</button></a>';
+    echo '<button type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m14 7l-5 5l5 5" />
+                            </svg></button></a>';
   }
 
   echo '<p>Page ' . htmlspecialchars($page) . ' of ' . htmlspecialchars($total_pages) . '</p>';
 
   if ($page < $total_pages) {
     echo '<a href="?page=' . ($page + 1) . '&fakultas=' . $fakultas_encoded . '">';
-    echo '<button type="button">Berikutnya</button></a>';
+    echo '<button type="button"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                                <g transform="translate(24 0) scale(-1 1)">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m14 7l-5 5l5 5" />
+                                </g>
+                            </svg></button></a>';
   }
 }
 ?>

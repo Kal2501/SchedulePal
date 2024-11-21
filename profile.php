@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 include 'include/connection.php';
 include 'include/function.php';
@@ -8,6 +9,8 @@ if (!isset($user)) {
     header('Location: login.php');
 }
 ?>
+=======
+>>>>>>> 199b944b15164bc479aa9ae0dea8456202518f46
 <!DOCTYPE html>
 <html lang="en">
 

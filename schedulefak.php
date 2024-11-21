@@ -2,12 +2,6 @@
 include 'include/connection.php';
 include 'include/function.php';
 
-session_start();
-$user = $_SESSION['user'];
-if (!isset($user)) {
-    header('Location: login.php');
-}
-
 $limit = 5;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
@@ -33,6 +27,9 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
     <?php require 'templates/navbar.php'; ?>
 
     <div class="content">
+        <div>
+            <h1>Jadwal Fakultas</h1>
+        </div>
         <div class="filter">
             <form action="" method="GET">
                 <?php foreach ($daftar_fakultas as $f): ?>
@@ -44,9 +41,6 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
             </form>
         </div>
 
-        <div>
-            <h1>Jadwal Fakultas</h1>
-        </div>
 
         <?php if ($jadwal->num_rows > 0): ?>
             <?php while ($row = $jadwal->fetch_assoc()): ?>
