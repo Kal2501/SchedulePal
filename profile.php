@@ -37,7 +37,7 @@ if (!isset($user)) {
                     <p>Fakultas</p>
                 </div>
             </div>
-            <input type="button" value="Logout">
+            <a class="logout-button" href="home.php?logOut=true">Logout</a>
         </div>
         <h1>Schedule yang Anda Buat</h1>
         <div class="card">

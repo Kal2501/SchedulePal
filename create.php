@@ -11,6 +11,7 @@ if (!isset($user)) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $scheduleBaru = ($_POST);
     tambahSchedule($conn, $scheduleBaru['judul'], $scheduleBaru['deskripsi'], $scheduleBaru['waktu'], $scheduleBaru['tanggal'], $scheduleBaru['lokasi'], $user['NIM'], $user['fakultas']);
+
     // $conn, $judul_acara, $deskripsi_acara, $waktu_acara, $tanggal_acara, $lokasi_acara, $nim, $fakultas
 }
 ?>
@@ -33,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h2>Details</h2>
         <input type="text" placeholder="Judul Acara" name="judul" required>
         <input type="text" placeholder="Deskripsi Acara" name="deskripsi" required>
-        <input type="text" placeholder="Lokasi" name="lokasi">
+        <input type="text" placeholder="Lokasi" name="lokasi" required>
         <h2>Tanggal dan Waktu</h2>
-        <input type="date" placeholder="Tanggal" name="tanggal">
-        <input type="time" name="waktu" id="">
+        <input type="date" placeholder="Tanggal" name="tanggal" required>
+        <input type="time" name="waktu" id="" required>
         <input type="submit" value="Buat">
     </form>
     <?php

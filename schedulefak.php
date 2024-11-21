@@ -2,6 +2,12 @@
 include 'include/connection.php';
 include 'include/function.php';
 
+session_start();
+$user = $_SESSION['user'];
+if (!isset($user)) {
+    header('Location: login.php');
+}
+
 $limit = 5;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $limit;
