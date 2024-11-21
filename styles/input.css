@@ -21,16 +21,6 @@
   font-weight: 400;
   letter-spacing: -0.05rem;
 }
-.form-input p {
-  padding: 1rem;
-  border-radius: 10px;
-  border: none;
-  background-color: var(--input);
-  font-size: 1rem;
-  color: var(--black);
-  font-weight: 400;
-  letter-spacing: -0.05rem;
-}
 .form-input input:focus {
   border: 1px solid var(--primary);
   outline: none;

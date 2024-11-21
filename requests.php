@@ -1,8 +1,8 @@
 <?php
-include 'include/connection.php';
-include 'include/function.php';
+    include 'include/connection.php';
+    include 'include/function.php';
 
-if (isset($_GET['id']) && isset($_GET['status'])) {
+    if (isset($_GET['id']) && isset($_GET['status'])) {
     $id_acara = $_GET['id'];
     $status = $_GET['status'];
     requestSchedule($id_acara, $status, $conn);
@@ -14,17 +14,16 @@ $perpage = 5;
 $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
 $offset = ($page - 1) * $perpage;
 
-$query = "SELECT users.NIM, fakultas.nama_fakultas, schedule.judul_acara, schedule.deskripsi, schedule.lokasi, schedule.waktu, schedule.tanggal, schedule.id_acara 
+$query = "SELECT users.NIM, fakultas.nama_fakultas, schedule.judul_acara, schedule.deskripsi, schedule.lokasi, schedule.waktu, schedule.tanggal 
               FROM schedule 
               JOIN users ON schedule.NIM = users.NIM 
               JOIN fakultas ON users.fakultas = fakultas.id_fakultas 
-              where schedule.status ='Tunggu' LIMIT $perpage OFFSET $offset";
+              LIMIT $perpage OFFSET $offset";
 $result = $conn->query($query);
 
-$totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule WHERE status = 'Tunggu'");
+$totalitemsquery = $conn->query("SELECT COUNT(*) as total FROM schedule");
 $totalitems = $totalitemsquery->fetch_assoc()['total'];
 $totalpages = ceil($totalitems / $perpage);
-
 ?>
 
 <!DOCTYPE html>
@@ -69,21 +68,13 @@ $totalpages = ceil($totalitems / $perpage);
                         <td><?= $row['waktu'] ?></td>
                         <td><?= $row['tanggal'] ?></td>
                         <td>
-                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=Diterima">
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#4ADE80">
-                                        <path
-                                            d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z" />
-                                    </svg></button>
-                            </a>
-                            <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=Ditolak">
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
-                                        width="24px" fill="#EF4444">
-                                        <path
-                                            d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z" />
-                                    </svg></button>
-                            </a>
-                        </td>
+                        <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=true">
+                            <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ADE80"><path d="m424-312 282-282-56-56-226 226-114-114-56 56 170 170ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/></svg></button>
+                        </a>
+                        <a href="requests.php?id=<?php echo $row['id_acara']; ?>&status=false">
+                            <button><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EF4444"><path d="m336-280 144-144 144 144 56-56-144-144 144-144-56-56-144 144-144-144-56 56 144 144-144 144 56 56ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Z"/></svg></button>
+                        </a>
+                    </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
@@ -102,7 +93,7 @@ $totalpages = ceil($totalitems / $perpage);
                     </a>
                 <?php endif; ?>
 
-                <p>Page <?= $page ?> of <?= $totalpages ?></p>
+                <div>Page <?= $page ?> of <?= $totalpages ?></div>
                 <?php if ($page < $totalpages): ?>
                     <a href="?page=<?= $page + 1 ?>">
                         <button type="button">
@@ -119,5 +110,4 @@ $totalpages = ceil($totalitems / $perpage);
         </div>
     </div>
 </body>
-
 </html>

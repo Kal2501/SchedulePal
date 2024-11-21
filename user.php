@@ -60,12 +60,7 @@ $schedules = $conn->query($query);
                         <td><?= $row['lokasi'] ?></td>
                         <td><?= $row['waktu'] ?></td>
                         <td><?= $row['tanggal'] ?></td>
-                        <td class="<?php
-                        echo $row['status'] === 'Diterima' ? 'status-true' :
-                            ($row['status'] === 'Ditolak' ? 'status-false' : 'status-pending');
-                        ?>">
-                            <?= $row['status'] ?>
-                        </td>
+                        <td><?= $row['status'] ?></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
@@ -84,7 +79,7 @@ $schedules = $conn->query($query);
                     </a>
                 <?php endif; ?>
 
-                <p>Page <?= $page ?> of <?= $totalpages ?></p>
+                <div>Page <?= $page ?> of <?= $totalpages ?></div>
                 <?php if ($page < $totalpages): ?>
                     <a href="?page=<?= $page + 1 ?>">
                         <button type="button">

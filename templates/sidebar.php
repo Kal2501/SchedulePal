@@ -1,8 +1,3 @@
-<?php
-// if (isset($_GET['logOut'])) {
-//     logOut();
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +12,7 @@
         rel="stylesheet">
 
 <body>
-    <a class="profile" href="home.php">
+    <a class="profile" href="index.php">
         Admin
         <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#8B5CF6">
             <path
@@ -53,7 +48,7 @@
             </a>
         </div>
         <div class="lower-nav">
-            <a class="logout-button" href="home.php?logOut=true">
+            <a class="logout-button" href="logOut.php">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
                     fill="#8B5CF6">
                     <path
