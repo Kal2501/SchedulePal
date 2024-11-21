@@ -116,6 +116,7 @@ function tambahSchedule($conn, $judul_acara, $deskripsi, $waktu, $tanggal, $loka
 {
   $sql = "INSERT INTO schedule (judul_acara, deskripsi, waktu, tanggal, lokasi, status, nim, fakultas) VALUES ('$judul_acara', '$deskripsi', '$waktu', '$tanggal', '$lokasi', 'Tunggu', '$nim', '$fakultas')";
   $result = mysqli_query($conn, $sql);
+  echo "<script>alert('Berhasil menambahkan acara');</script>";
   return;
 }
 
