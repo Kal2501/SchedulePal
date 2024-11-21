@@ -12,13 +12,11 @@
   --secondary: #f5f3ff;
   --background-admin: #ede9fe;
   --input: #ddd6fe;
-  --positive: #4ade80;
   --negative: #ef4444;
-  --pending: rgb(250, 179, 48);
+  --negative-hover: #dc2626;
 }
 .content {
   position: absolute;
-  /* height: 100%; */
   width: 65.5vw;
   left: 25%;
   top: 9rem;
@@ -47,30 +45,11 @@ tbody {
 }
 tbody td {
   outline: 1px solid var(--primary);
-  width: 10px;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem;
   align-items: center;
   text-align: center;
   font-size: 0.9rem;
 }
-.status-true {
-  background-color: var(--positive);
-  color: var(--secondary);
-  font-weight: bold;
-}
-
-.status-false {
-  background-color: var(--negative);
-  color: var(--secondary);
-  font-weight: bold;
-}
-
-.status-pending {
-  background-color: var(--pending);
-  color: var(--secondary);
-  font-weight: bold;
-}
-
 td button {
   background: none;
   border: none;

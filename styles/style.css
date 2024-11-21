@@ -38,21 +38,7 @@ body {
   color: var(--black);
   letter-spacing: -0.15rem;
 }
-.kembali {
-  background-color: var(--negative);
-  border: none;
-  font-size: 0.9rem;
-  padding: 0.9rem 1.45rem;
-  border-radius: 10px;
-  color: var(--secondary);
-  letter-spacing: -0.005rem;
-  transition: 0.15s;
-}
-.kembali:hover {
-  background-color: var(--negative-hover);
-  transition: 0.15s;
-}
-.tambah {
+.header button {
   background-color: var(--primary);
   border: none;
   font-size: 0.9rem;
@@ -62,7 +48,7 @@ body {
   letter-spacing: -0.005rem;
   transition: 0.15s;
 }
-.tambah:hover {
+.header button:hover {
   background-color: var(--primary-hover);
   transition: 0.15s;
 }

@@ -117,17 +117,3 @@ form p {
     color: var(--primary);
   }
 }
-@media screen and (max-width: 900px) {
-  form {
-    width: 100%;
-    padding: 2rem;
-    margin: 2rem;
-  }
-  form p {
-    font-size: 0.875rem;
-  }
-  form input {
-    font-size: 0.875rem;
-    padding: 0.875rem;
-  }
-}
