@@ -130,7 +130,8 @@ function ambilDaftarFakultas($conn)
 {
   $query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas 
             FROM schedule s
-            JOIN fakultas f ON s.fakultas = f.id_fakultas";
+            JOIN fakultas f ON s.fakultas = f.id_fakultas
+            WHERE s.status='Diterima'";
   $result = $conn->query($query);
 
   $daftar_fakultas = [];
