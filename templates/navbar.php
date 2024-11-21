@@ -22,7 +22,7 @@ if (isset($_SESSION['NIM'])) {
         <img src="img/Logo.svg" alt="logo-schedulepal" width="185px">
         <div class="nav-links">
             <a href="index.php">Beranda</a>
-            <a href="logOutTest.php">logOut</a> <!-- test -->
+            <!-- <a href="logOutTest.php">logOut</a> test -->
             <?php
             if (isset($_SESSION['user'])) {
                 echo '<a href="create.php">Buat Schedule</a>';
