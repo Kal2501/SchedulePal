@@ -5,7 +5,6 @@ if (isset($user['NIM'])) {
     $fotoProfile = fotoProfile($conn, $user['NIM']);
     $nilai = $fotoProfile ? './profile/' . htmlspecialchars($fotoProfile) : ".\profile\default.svg";
 }
-var_dump($nilai);
 ?>
 <!DOCTYPE html>
 <html lang="en">
