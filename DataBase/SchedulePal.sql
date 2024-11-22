@@ -38,7 +38,7 @@ CREATE TABLE `fakultas` (
 
 LOCK TABLES `fakultas` WRITE;
 /*!40000 ALTER TABLE `fakultas` DISABLE KEYS */;
-INSERT INTO `fakultas` VALUES (2,'Fakultas Teknik',NULL),(3,'Fakultas Ekonomi dan Bisnis',NULL),(4,'Fakultas Hukum',NULL),(5,'Fakultas Kedokteran',NULL),(6,'Fakultas Psikologi',NULL),(7,'Fakultas Ilmu Sosial dan Politik',NULL),(8,'Fakultas Seni Rupa dan Desain',NULL),(9,'Fakultas Matematika dan Ilmu Pengetahuan Alam',NULL),(10,'Fakultas Pertanian',NULL),(11,'Fakultas Admin',NULL),(12,'Fakultas  Gaming',NULL),(13,'Fakultas Pemancing',NULL);
+INSERT INTO `fakultas` VALUES (2,'Fakultas Teknik','engineering2.png'),(3,'Fakultas Ekonomi dan Bisnis',NULL),(4,'Fakultas Hukum',NULL),(5,'Fakultas Kedokteran',NULL),(6,'Fakultas Psikologi',NULL),(7,'Fakultas Ilmu Sosial dan Politik',NULL),(8,'Fakultas Seni Rupa dan Desain',NULL),(9,'Fakultas Matematika dan Ilmu Pengetahuan Alam',NULL),(10,'Fakultas Pertanian',NULL),(11,'Fakultas Admin',NULL),(12,'Fakultas  Gaming',NULL),(13,'Fakultas Pemancing',NULL);
 /*!40000 ALTER TABLE `fakultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -116,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-22 22:28:49
+-- Dump completed on 2024-11-22 22:43:07
