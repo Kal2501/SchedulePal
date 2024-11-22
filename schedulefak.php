@@ -41,8 +41,8 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
                 <?php foreach ($daftar_fakultas as $f): ?>
                     <div>
                         <button type="submit" name="fakultas" value="<?= htmlspecialchars($f['id']); ?>">
-                            <img src="icons_fakultas/engineering.png" alt=""
-                                width="25px"><?= htmlspecialchars($f['nama']); ?>
+                            <img src="<?= $f['logo'] ? htmlspecialchars($f['logo']) : 'icons_fakultas/engineering.png' ?>"
+                                alt="" width="25px"><?= htmlspecialchars($f['nama']); ?>
                         </button>
                     </div>
                 <?php endforeach; ?>

@@ -45,7 +45,7 @@ if (isset($user['foto'])) {
         </div>
         <?php
         if (isset($_SESSION['user'])) {
-            echo '<a class="profile-desk" href="profile.php"><img src="' . $fotoProfile . '" alt=""></a>';
+            echo '<a class="profile-desk" href="profile.php"><img src="' . htmlspecialchars($fotoProfile) . '" alt=""></a>';
         }
         ?>
         <div class="hamburger">
