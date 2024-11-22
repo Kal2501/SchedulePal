@@ -280,5 +280,52 @@ function getUserSchedules($conn, $NIM)
   }
   return $schedules;
 }
+function ambilidschedule($conn, $id_acara)
+{
+  $query = "SELECT * FROM schedule WHERE id_acara = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param("s", $id_acara);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  return $result->fetch_assoc();
+}
 
+function updateschedule($conn, $id_acara, $data)
+{
+  $query = "UPDATE schedule SET 
+            -- judul_acara = ?, 
+            deskripsi = ?, 
+            lokasi = ?, 
+            tanggal = ?, 
+            waktu = ? 
+            WHERE id_acara = ?";
+  $stmt = $conn->prepare($query);
+  $stmt->bind_param(
+    "sssss",
+    // $data['judul_acara'],
+    $data['deskripsi'],
+    $data['lokasi'],
+    $data['tanggal'],
+    $data['waktu'],
+    $id_acara
+  );
+
+  if ($stmt->execute()) {
+    echo "<script>
+              alert('Jadwal berhasil diubah!');
+              window.location.href = 'profile.php';
+            </script>";
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+}
+
+function gagalupdate($pesan)
+{
+  echo "<script>
+          alert('$pesan');
+          window.location.href = 'profile.php';
+        </script>";
+  exit;
+}
 ?>
