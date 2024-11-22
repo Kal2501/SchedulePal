@@ -1,10 +1,10 @@
 <?PHP
 include 'include/connection.php';
 
-if (isset($_SESSION['NIM'])) {
-    $fotoProfile = fotoProfile($conn, $_SESSION['NIM']);
+if (isset($user['foto'])) {
+    $fotoProfile = fotoProfile($conn, $user['NIM']);
 } else {
-    $fotoProfile = "profile\default.svg";
+    $fotoProfile = ".\profile\default.svg";
 }
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@ if (isset($_SESSION['NIM'])) {
         </div>
         <?php
         if (isset($_SESSION['user'])) {
-            echo '<a class="profile-desk" href="profile.php"><img src=".\profile\default.svg" alt=""></a>';
+            echo '<a class="profile-desk" href="profile.php"><img src="' . $fotoProfile . '" alt=""></a>';
         }
         ?>
         <div class="hamburger">
