@@ -4,7 +4,8 @@ USE schedulepal;
 
 CREATE TABLE fakultas (
   id_fakultas int NOT NULL primary key auto_increment,
-  nama_fakultas varchar(50) NOT NULL
+  nama_fakultas varchar(50) NOT NULL,
+  logo varchar(255)
 );
 
 CREATE TABLE users (
@@ -14,7 +15,8 @@ CREATE TABLE users (
   password varchar(255) NOT NULL,
   role enum('user','admin') NOT NULL DEFAULT 'user',
   PRIMARY KEY (NIM),
-  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE
+  FOREIGN KEY (fakultas) REFERENCES fakultas(id_fakultas) ON DELETE CASCADE,
+  foto varchar(255)
 );
 
 CREATE TABLE schedule (

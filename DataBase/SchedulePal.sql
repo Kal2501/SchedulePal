@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS `fakultas`;
 CREATE TABLE `fakultas` (
   `id_fakultas` int NOT NULL AUTO_INCREMENT,
   `nama_fakultas` varchar(50) NOT NULL,
+  `logo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_fakultas`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +38,7 @@ CREATE TABLE `fakultas` (
 
 LOCK TABLES `fakultas` WRITE;
 /*!40000 ALTER TABLE `fakultas` DISABLE KEYS */;
-INSERT INTO `fakultas` VALUES (2,'Fakultas Teknik'),(3,'Fakultas Ekonomi dan Bisnis'),(4,'Fakultas Hukum'),(5,'Fakultas Kedokteran'),(6,'Fakultas Psikologi'),(7,'Fakultas Ilmu Sosial dan Politik'),(8,'Fakultas Seni Rupa dan Desain'),(9,'Fakultas Matematika dan Ilmu Pengetahuan Alam'),(10,'Fakultas Pertanian'),(11,'Fakultas Admin'),(12,'Fakultas  Gaming'),(13,'Fakultas Pemancing');
+INSERT INTO `fakultas` VALUES (2,'Fakultas Teknik',NULL),(3,'Fakultas Ekonomi dan Bisnis',NULL),(4,'Fakultas Hukum',NULL),(5,'Fakultas Kedokteran',NULL),(6,'Fakultas Psikologi',NULL),(7,'Fakultas Ilmu Sosial dan Politik',NULL),(8,'Fakultas Seni Rupa dan Desain',NULL),(9,'Fakultas Matematika dan Ilmu Pengetahuan Alam',NULL),(10,'Fakultas Pertanian',NULL),(11,'Fakultas Admin',NULL),(12,'Fakultas  Gaming',NULL),(13,'Fakultas Pemancing',NULL);
 /*!40000 ALTER TABLE `fakultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,7 +64,7 @@ CREATE TABLE `schedule` (
   KEY `NIM` (`NIM`),
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`fakultas`) REFERENCES `fakultas` (`id_fakultas`) ON DELETE CASCADE,
   CONSTRAINT `schedule_ibfk_2` FOREIGN KEY (`NIM`) REFERENCES `users` (`NIM`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +73,7 @@ CREATE TABLE `schedule` (
 
 LOCK TABLES `schedule` WRITE;
 /*!40000 ALTER TABLE `schedule` DISABLE KEYS */;
-INSERT INTO `schedule` VALUES (9,'Seminar Ekonomi','Seminar tentang perkembangan ekonomi global.','13:00:00','2024-12-10','Aula Fakultas Ekonomi','Diterima',12345678903,3),(10,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4),(12,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4),(13,'test','test','03:02:00','2026-03-02','test','Tunggu',2309106000,2);
+INSERT INTO `schedule` VALUES (9,'Seminar Ekonomi','Seminar tentang perkembangan ekonomi global.','13:00:00','2024-12-10','Aula Fakultas Ekonomi','Diterima',12345678903,3),(10,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4),(12,'Pelatihan Hukum','Pelatihan keterampilan hukum bagi mahasiswa.','10:00:00','2024-11-20','Ruang Diskusi Fakultas Hukum','Tunggu',12345678905,4),(13,'test','test','03:02:00','2026-03-02','test','Tunggu',2309106000,2),(14,'Lomba Minecraft','akan di lakukan lomba di kampus','15:02:00','2024-02-03','unmul','Diterima',2309106000,2);
 /*!40000 ALTER TABLE `schedule` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +103,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (999,'admin',11,'$2y$10$9h3plJhS6R.nBD8d0AiCkuGW9AGaq0kmxT49.ZCC34p3R0oEYUm.y','admin',NULL),(2309106000,'dummy',2,'$2y$10$sQrefZjHvFm7hKp14fCQB.lAVrA6Oe9/dvC4gVgY6G.fS74UmeuWG','user',NULL),(12345678902,'janedoe',2,'password456','user',NULL),(12345678903,'alice',3,'password789','admin',NULL),(12345678905,'charlie',4,'password654','user',NULL);
+INSERT INTO `users` VALUES (999,'admin',11,'$2y$10$9h3plJhS6R.nBD8d0AiCkuGW9AGaq0kmxT49.ZCC34p3R0oEYUm.y','admin',NULL),(2309106000,'dummy',2,'$2y$10$sQrefZjHvFm7hKp14fCQB.lAVrA6Oe9/dvC4gVgY6G.fS74UmeuWG','user','2309106000_1732284813_Screenshot (150).png'),(12345678902,'janedoe',2,'password456','user',NULL),(12345678903,'alice',3,'password789','admin',NULL),(12345678905,'charlie',4,'password654','user',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -115,4 +116,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-19 14:30:00
+-- Dump completed on 2024-11-22 22:28:49

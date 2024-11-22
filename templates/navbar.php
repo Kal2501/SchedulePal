@@ -1,11 +1,11 @@
 <?PHP
 include 'include/connection.php';
 
-if (isset($user['foto'])) {
+if (isset($user['NIM'])) {
     $fotoProfile = fotoProfile($conn, $user['NIM']);
-} else {
-    $fotoProfile = ".\profile\default.svg";
+    $nilai = $fotoProfile ? './profile/' . htmlspecialchars($fotoProfile) : ".\profile\default.svg";
 }
+var_dump($nilai);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +45,7 @@ if (isset($user['foto'])) {
         </div>
         <?php
         if (isset($_SESSION['user'])) {
-            echo '<a class="profile-desk" href="profile.php"><img src="' . htmlspecialchars($fotoProfile) . '" alt=""></a>';
+            echo '<a class="profile-desk" href="profile.php"><img src="' . $nilai . '" alt=""></a>';
         }
         ?>
         <div class="hamburger">
