@@ -49,7 +49,7 @@ if (isset($user['foto'])) {
         <div class="profile">
             <div class="profile-info">
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <label for="profile-pic">
+                    <label for="profile-pic" class="profile-pic">
                         <img src="<?php echo $profile['foto'] ? 'profile/' . htmlspecialchars($profile['foto']) : './profile/default.svg'; ?>"
                             alt="Profile Picture">
                     </label>
