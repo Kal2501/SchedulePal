@@ -70,6 +70,7 @@ function login($conn, $username, $password)
     "username" => $user['username'],
     "role" => $user['role'],
     "fakultas" => $user['fakultas'],
+    "foto" => $user['foto'],
   ];
 }
 
@@ -129,7 +130,7 @@ function fotoProfile($conn, $NIM)
 }
 function ambilDaftarFakultas($conn)
 {
-  $query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas 
+  $query = "SELECT DISTINCT f.nama_fakultas, f.id_fakultas, f.logo 
             FROM schedule s
             JOIN fakultas f ON s.fakultas = f.id_fakultas
             WHERE s.status='Diterima'";
@@ -140,7 +141,8 @@ function ambilDaftarFakultas($conn)
     while ($row = $result->fetch_assoc()) {
       $daftar_fakultas[] = [
         'id' => $row['id_fakultas'],
-        'nama' => $row['nama_fakultas']
+        'nama' => $row['nama_fakultas'],
+        'logo' => $row['logo']
       ];
     }
   }

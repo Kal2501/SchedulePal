@@ -22,6 +22,12 @@ if (isset($_GET['delete']) && isset($_GET['id'])) {
 
 $profile = getUserProfile($conn, $NIM);
 $schedules = getUserSchedules($conn, $NIM);
+
+if (isset($user['foto'])) {
+    $fotoProfile = fotoProfile($conn, $user['NIM']);
+} else {
+    $fotoProfile = "\profile\default.svg";
+}
 ?>
 
 <!DOCTYPE html>
