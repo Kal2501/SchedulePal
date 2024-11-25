@@ -267,20 +267,20 @@ function getUserProfile($conn, $NIM)
   return null;
 }
 
-function getUserSchedules($conn, $NIM)
-{
-  $sql = "SELECT * FROM schedule WHERE NIM = ? ORDER BY tanggal DESC, waktu DESC";
+function getUserSchedulesWithLimit($conn, $NIM, $limit, $offset) {
+  $sql = "SELECT * FROM schedule WHERE NIM = ? ORDER BY tanggal ASC, waktu DESC LIMIT ? OFFSET ?";
   $stmt = $conn->prepare($sql);
-  $stmt->bind_param("i", $NIM);
+  $stmt->bind_param("iii", $NIM, $limit, $offset);
   $stmt->execute();
   $result = $stmt->get_result();
 
   $schedules = [];
   while ($row = $result->fetch_assoc()) {
-    $schedules[] = $row;
+      $schedules[] = $row;
   }
   return $schedules;
 }
+
 function ambilidschedule($conn, $id_acara)
 {
   $query = "SELECT * FROM schedule WHERE id_acara = ?";
@@ -319,6 +319,46 @@ function updateschedule($conn, $id_acara, $data)
   } else {
     echo "Error: " . $stmt->error;
   }
+}
+
+function countUserSchedules($conn, $NIM) {
+  $sql = "SELECT COUNT(*) AS total FROM schedule WHERE NIM = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $NIM);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $row = $result->fetch_assoc();
+  return $row['total'];
+}
+
+function tampilkanHalamanuser($page, $total_pages)
+{
+
+    // Tombol Previous
+    if ($page > 1) {
+        echo '<a href="?page=' . ($page - 1) . '&fakultas=' . '">';
+        echo '<button type="button" class="btn-pagination prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" d="m14 7l-5 5l5 5" />
+                </svg>
+              </button>
+              </a>';
+    }
+    echo '<p class="pagination-info">Page ' . htmlspecialchars($page) . ' of ' . htmlspecialchars($total_pages) . '</p>';
+
+    if ($page < $total_pages) {
+        echo '<a href="?page=' . ($page + 1) . '&fakultas=' .'">';
+        echo '<button type="button" class="btn-pagination next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
+                    <g transform="translate(24 0) scale(-1 1)">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="m14 7l-5 5l5 5" />
+                    </g>
+                </svg>
+              </button>
+              </a>';
+    }
 }
 
 function gagalupdate($pesan)
