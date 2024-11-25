@@ -38,7 +38,8 @@ $schedule = ambilidschedule($conn, $id_acara);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/edcre.css">
-    <title>Edit Schedule</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>Ubah Schedule</title>
 </head>
 
 <body>
@@ -53,10 +54,10 @@ $schedule = ambilidschedule($conn, $id_acara);
         <!-- <input type="text" name="judul_acara" value="" required> -->
 
         <input type="text" name="deskripsi" placeholder="Deskripsi Acara"
-            value="<?= htmlspecialchars($schedule['deskripsi']); ?>" required>
+            value="<?= htmlspecialchars($schedule['deskripsi']); ?>" required autocomplete="off">
 
         <input type="text" name="lokasi" placeholder="Lokasi" value="<?= htmlspecialchars($schedule['lokasi']); ?>"
-            required>
+            required autocomplete="off">
 
         <h2>Tanggal dan Waktu</h2>
         <input type="date" name="tanggal" value="<?= htmlspecialchars($schedule['tanggal']); ?>" required>

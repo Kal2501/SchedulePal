@@ -23,6 +23,7 @@ if (isset($_POST['nama'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/input.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <title>Tambah Data Fakultas</title>
 </head>
 

@@ -50,7 +50,7 @@ form input[type="text"] {
   font-size: 0.9rem;
 }
 form input[type="text"]:focus {
-  outline: 1px solid var(--primary);
+  outline: 2px solid var(--primary);
   background-color: var(--secondary);
   transition: 0.15s;
 }
@@ -64,7 +64,7 @@ form input[type="date"] {
   border-radius: 15px;
 }
 form input[type="date"]:focus {
-  outline: 1px solid var(--primary);
+  outline: 2px solid var(--primary);
   background-color: var(--secondary);
   transition: 0.15s;
 }
@@ -75,7 +75,7 @@ form input[type="time"] {
   border-radius: 15px;
 }
 form input[type="time"]:focus {
-  outline: 1px solid var(--primary);
+  outline: 2px solid var(--primary);
   background-color: var(--secondary);
   transition: 0.15s;
 }

@@ -26,6 +26,7 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/schedulefak.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <title>Schedule Fakultas</title>
 </head>
 
@@ -34,7 +35,7 @@ $jadwal = ambilschedule($conn, $fakultas, $limit, $offset);
 
     <div class="content">
         <div>
-            <h1>Jadwal Fakultas</h1>
+            <h1>Schedule Fakultas</h1>
         </div>
         <div class="filter">
             <form action="" method="GET">

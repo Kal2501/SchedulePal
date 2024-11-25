@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/edcre.css">
-    <title>Document</title>
+    <title>Buat Schedule</title>
 </head>
 
 <body>
@@ -32,9 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="POST">
         <h1>Buat Schedule</h1>
         <h2>Details</h2>
-        <input type="text" placeholder="Judul Acara" name="judul" required>
-        <input type="text" placeholder="Deskripsi Acara" name="deskripsi" required>
-        <input type="text" placeholder="Lokasi" name="lokasi" required>
+        <input type="text" placeholder="Judul Acara" name="judul" required autocomplete="off">
+        <input type="text" placeholder="Deskripsi Acara" name="deskripsi" required autocomplete="off">
+        <input type="text" placeholder="Lokasi" name="lokasi" required autocomplete="off">
         <h2>Tanggal dan Waktu</h2>
         <input type="date" placeholder="Tanggal" name="tanggal" required>
         <input type="time" name="waktu" id="" required>
