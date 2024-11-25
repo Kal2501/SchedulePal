@@ -40,6 +40,7 @@ if (isset($_POST['nama'])) {
         </div>
         <form action="" method="post" class="form-input">
             <input type="text" placeholder="Nama Fakultas" name="nama" required>
+            <input type="file" name="" id="" required>
             <button>Tambah</button>
         </form>
     </div>

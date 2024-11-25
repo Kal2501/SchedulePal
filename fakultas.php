@@ -55,6 +55,7 @@ $id;
                 <tr>
                     <th>ID Fakultas</th>
                     <th>Nama Fakultas</th>
+                    <th>Icon</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -63,6 +64,7 @@ $id;
                     <tr>
                         <td><?= $row['id_fakultas'] ?></td>
                         <td><?= $row['nama_fakultas'] ?></td>
+                        <td>Icon</td>
                         <td>
                             <a href="edit_fakultas.php?id=<?= $row['id_fakultas'] ?>">
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960"
