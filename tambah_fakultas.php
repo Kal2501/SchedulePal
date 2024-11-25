@@ -11,7 +11,9 @@ if (!isset($user)) {
 if (isset($_POST['nama'])) {
     // $id = $_POST['id'];
     $nama = $_POST['nama'];
-    $hasil = tambahFakultas($nama, $conn);
+    $file = $_FILES['Icon'];
+    var_dump($nama);
+    $hasil = tambahFakultas($conn, $file, $nama);
     echo "<script>alert('" . $hasil['message'] . "')</script>";
     echo "<script>window.location.href='fakultas.php';</script>";
 }
@@ -38,9 +40,9 @@ if (isset($_POST['nama'])) {
                 <button class="kembali">Kembali</button>
             </a>
         </div>
-        <form action="" method="post" class="form-input">
+        <form action="" method="post" class="form-input" enctype="multipart/form-data">
             <input type="text" placeholder="Nama Fakultas" name="nama" required>
-            <input type="file" name="" id="" required>
+            <input type="file" name="Icon" id="" required accept="image/*">
             <button>Tambah</button>
         </form>
     </div>
