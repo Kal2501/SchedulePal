@@ -12,6 +12,11 @@ function logOut()
 
 function deleteFakultas($id, $conn)
 {
+  $sql = "SELECT logo FROM fakultas WHERE id_fakultas ='$id'";
+  $hasil = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($hasil);
+  $path = 'icons_fakultas/' . $row['logo'];
+  unlink($path);
   $sql = "DELETE FROM fakultas WHERE id_fakultas ='$id'";
   mysqli_query($conn, $sql);
   return;
@@ -27,19 +32,6 @@ function editFakultas($id, $nama, $conn)
     return ["message" => "Data tidak lengkap"];
   }
 
-}
-
-function tambahFakultas($nama, $conn)
-{
-  // $sql = "SELECT * FROM fakultas WHERE id_fakultas='$id'";
-  // $hasil = mysqli_query($conn, $sql);
-  // if (isset(mysqli_fetch_assoc($hasil)['id_fakultas'])) {
-  //   return ["message" => "Fakultas sudah ada"];
-  // } else {
-  $sql = "INSERT INTO fakultas (nama_fakultas) VALUES ('$nama')";
-  mysqli_query(mysql: $conn, query: $sql);
-  return ["message" => "Fakultas berhasil ditambahkan"];
-  // }
 }
 
 function login($conn, $username, $password)
@@ -267,7 +259,8 @@ function getUserProfile($conn, $NIM)
   return null;
 }
 
-function getUserSchedulesWithLimit($conn, $NIM, $limit, $offset) {
+function getUserSchedulesWithLimit($conn, $NIM, $limit, $offset)
+{
   $sql = "SELECT * FROM schedule WHERE NIM = ? ORDER BY tanggal ASC, waktu DESC LIMIT ? OFFSET ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("iii", $NIM, $limit, $offset);
@@ -276,7 +269,7 @@ function getUserSchedulesWithLimit($conn, $NIM, $limit, $offset) {
 
   $schedules = [];
   while ($row = $result->fetch_assoc()) {
-      $schedules[] = $row;
+    $schedules[] = $row;
   }
   return $schedules;
 }
@@ -321,7 +314,8 @@ function updateschedule($conn, $id_acara, $data)
   }
 }
 
-function countUserSchedules($conn, $NIM) {
+function countUserSchedules($conn, $NIM)
+{
   $sql = "SELECT COUNT(*) AS total FROM schedule WHERE NIM = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("i", $NIM);
@@ -334,22 +328,22 @@ function countUserSchedules($conn, $NIM) {
 function tampilkanHalamanuser($page, $total_pages)
 {
 
-    // Tombol Previous
-    if ($page > 1) {
-        echo '<a href="?page=' . ($page - 1) . '&fakultas=' . '">';
-        echo '<button type="button" class="btn-pagination prev">
+  // Tombol Previous
+  if ($page > 1) {
+    echo '<a href="?page=' . ($page - 1) . '&fakultas=' . '">';
+    echo '<button type="button" class="btn-pagination prev">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                         stroke-width="2" d="m14 7l-5 5l5 5" />
                 </svg>
               </button>
               </a>';
-    }
-    echo '<p class="pagination-info">Page ' . htmlspecialchars($page) . ' of ' . htmlspecialchars($total_pages) . '</p>';
+  }
+  echo '<p class="pagination-info">Page ' . htmlspecialchars($page) . ' of ' . htmlspecialchars($total_pages) . '</p>';
 
-    if ($page < $total_pages) {
-        echo '<a href="?page=' . ($page + 1) . '&fakultas=' .'">';
-        echo '<button type="button" class="btn-pagination next">
+  if ($page < $total_pages) {
+    echo '<a href="?page=' . ($page + 1) . '&fakultas=' . '">';
+    echo '<button type="button" class="btn-pagination next">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24">
                     <g transform="translate(24 0) scale(-1 1)">
                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -358,7 +352,7 @@ function tampilkanHalamanuser($page, $total_pages)
                 </svg>
               </button>
               </a>';
-    }
+  }
 }
 
 function gagalupdate($pesan)
@@ -368,5 +362,30 @@ function gagalupdate($pesan)
           window.location.href = 'profile.php';
         </script>";
   exit;
+}
+
+function tambahFakultas($conn, $file, $nama)
+{
+  $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+  $maxFileSize = 5 * 1024 * 1024; // 5MB
+
+  if (!in_array($file['type'], $allowedTypes)) {
+    return ["status" => false, "message" => "Invalid file type. Only JPG, PNG, and GIF are allowed."];
+  }
+
+  if ($file['size'] > $maxFileSize) {
+    return ["status" => false, "message" => "File is too large. Maximum size is 5MB."];
+  }
+
+  $fileName = $nama . '_' . time() . '_' . basename($file['name']);
+  $uploadPath = 'icons_fakultas/' . $fileName;
+
+  if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+    $sql = "INSERT INTO fakultas (nama_fakultas, logo) VALUES ('$nama', '$fileName')";
+    mysqli_query($conn, $sql);
+    return ["message" => "Fakultas berhasil ditambahkan"];
+  }
+
+  return ["message" => "Fakultas gagal ditambahkan"];
 }
 ?>

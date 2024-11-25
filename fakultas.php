@@ -64,7 +64,8 @@ $id;
                     <tr>
                         <td><?= $row['id_fakultas'] ?></td>
                         <td><?= $row['nama_fakultas'] ?></td>
-                        <td>Icon</td>
+                        <td><img src="<?= $row['logo'] ? 'icons_fakultas/' . htmlspecialchars($row['logo']) : 'icons_fakultas/engineering.png' ?>"
+                                alt=""></td>
                         <td>
                             <a href="edit_fakultas.php?id=<?= $row['id_fakultas'] ?>">
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960"
