@@ -210,31 +210,46 @@ function tampilkanHalaman($page, $total_pages, $fakultas)
 
 function updateProfilePicture($conn, $NIM, $file)
 {
-  $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-  $maxFileSize = 5 * 1024 * 1024; // 5MB
+    $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    $maxFileSize = 5 * 1024 * 1024; // 5MB
 
-  if (!in_array($file['type'], $allowedTypes)) {
-    return ["status" => false, "message" => "Invalid file type. Only JPG, PNG, and GIF are allowed."];
-  }
-
-  if ($file['size'] > $maxFileSize) {
-    return ["status" => false, "message" => "File is too large. Maximum size is 5MB."];
-  }
-
-  $fileName = $NIM . '_' . time() . '_' . basename($file['name']);
-  $uploadPath = 'profile/' . $fileName;
-
-  if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
-    $sql = "UPDATE users SET foto = ? WHERE NIM = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $fileName, $NIM);
-
-    if ($stmt->execute()) {
-      return ["status" => true, "message" => "Profile picture updated successfully"];
+    if (!in_array($file['type'], $allowedTypes)) {
+        return ["status" => false, "message" => "Invalid file type. Only JPG, PNG, and GIF are allowed."];
     }
-  }
 
-  return ["status" => false, "message" => "Failed to update profile picture"];
+    if ($file['size'] > $maxFileSize) {
+        return ["status" => false, "message" => "File is too large. Maximum size is 5MB."];
+    }
+
+    $sqlGetOldPhoto = "SELECT foto FROM users WHERE NIM = ?";
+    $stmt = $conn->prepare($sqlGetOldPhoto);
+    $stmt->bind_param("i", $NIM);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $oldPhoto = $row['foto'];
+
+        if (!empty($oldPhoto) && file_exists('profile/' . $oldPhoto)) {
+            unlink('profile/' . $oldPhoto);
+        }
+    }
+
+    $fileName = $NIM . '_' . time() . '_' . basename($file['name']);
+    $uploadPath = 'profile/' . $fileName;
+
+    if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+        $sqlUpdate = "UPDATE users SET foto = ? WHERE NIM = ?";
+        $stmtUpdate = $conn->prepare($sqlUpdate);
+        $stmtUpdate->bind_param("si", $fileName, $NIM);
+
+        if ($stmtUpdate->execute()) {
+            return ["status" => true, "message" => "Profile picture updated successfully"];
+        }
+    }
+
+    return ["status" => false, "message" => "Failed to update profile picture"];
 }
 
 function deleteSchedule($conn, $id_acara, $NIM)
